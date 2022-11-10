@@ -1,0 +1,56 @@
+<div class="swiper-box">
+    <div class="swiper-container card-swiper">
+        
+        <swiper
+            [direction]="'vertical'"
+            [slidesPerView]="'auto'"
+            [freeMode]="true"
+            [scrollbar]="{ draggable: true }"
+            [mousewheel]="true"
+            class="swiper-wrapper"
+            [breakpoints]="{
+              '360': {
+                direction: 'horizontal',
+                slidesPerView: 'auto'
+              },
+              '650': {
+                direction: 'horizontal',
+                slidesPerView: 2
+              },
+              '1200': {
+                direction: 'vertical',
+                slidesPerView: 'auto'
+              }
+            }"
+        >
+            <ng-template swiperSlide  *ngFor="let item of data">
+                
+                <div class="card-bx stacked card">
+                    <img class="bg-img" src="{{item.image}}" alt="">
+                    <div class="card-info">
+                        <p class="mb-1 text-white fs-14">Main Balance</p>
+                        <div class="d-flex justify-content-between align-items-start">
+                            <h2 class="num-text text-white mb-5 font-w600">{{item.price}}</h2>
+                            <img src="{{item.icon_image}}" alt="">
+                        </div>
+                        <div class="d-flex">
+                            <div class="mr-4 text-white">
+                                <p class="fs-12 mb-1 op6">VALID THRU</p>
+                                <span>{{item.valid_thrugh}}</span>
+                            </div>
+                            <div class="text-white">
+                                <p class="fs-12 mb-1 op6">CARD HOLDER</p>
+                                <span>{{item.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </ng-template>
+
+            
+        </swiper>
+        <div class="swiper-scrollbar"></div>
+    <!-- Add Scroll Bar -->
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="card-header border-0 pb-0">
+        <h4 class="fs-20 text-black">Current Statistic</h4>
+    </div>
+    <div class="card-body pb-0">
+        <!-- <div id="currentChart" class="current-chart"></div> -->
+        
+        <apx-chart class="current-chart"
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [plotOptions]="chartOptions.plotOptions"
+            [labels]="chartOptions.labels"
+            [stroke]="chartOptions.stroke"
+            [colors]="chartOptions.colors"
+        ></apx-chart>
+        
+        
+        
+        <div class="chart-content">	
+            <div class="d-flex justify-content-between mb-2 align-items-center">
+                <div>
+                    <svg class="mr-2" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="15" height="15" rx="7.5" fill="#EB8153"/>
+                    </svg>
+                    <span class="fs-14">Income (66%)</span>
+                </div>
+                <div>
+                    <h5 class="mb-0">$167,884.21</h5>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-2 align-items-center">
+                <div>
+                    <svg class="mr-2" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="15" height="15" rx="7.5" fill="#71B945"/>
+                    </svg>
+                    
+                    <span class="fs-14">Income (50%)</span>
+                </div>
+                <div>
+                    <h5 class="mb-0">$56,411.33</h5>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-2 align-items-center">
+                <div>
+                    <svg class="mr-2" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="15" height="15" rx="7.5" fill="#4A8CDA"/>
+                    </svg>
+                    <span class="fs-14">Income (11%)</span>
+                </div>
+                <div>
+                    <h5 class="mb-0">$81,981.22</h5>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mb-2 align-items-center">
+                <div>
+                    <svg class="mr-2" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="15" height="15" rx="7.5" fill="#6647BF"/>
+                    </svg>
+                    <span class="fs-14">Income (23%)</span>
+                </div>
+                <div>
+                    <h5 class="mb-0">$12,432.51</h5>
+                </div>
+            </div>
+        </div>	
+    </div>
+</div>

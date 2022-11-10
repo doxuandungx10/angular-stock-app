@@ -1,0 +1,67 @@
+
+    <div class="card">
+        <div class="card-header border-0 flex-wrap pb-0">
+            <div class="mb-3">
+                <h4 class="fs-20 text-black">Market Overview</h4>
+                <p class="mb-0 fs-12 text-black">Lorem ipsum dolor sit amet, consectetur</p>
+            </div>
+            <div class="d-flex flex-wrap mb-2">
+                <div class="custom-control check-switch custom-checkbox mr-4 mb-2">
+                    <input type="checkbox" class="custom-control-input" id="customCheck9">
+                    <label class="custom-control-label" for="customCheck9">
+                        <span class="d-block  font-w500 mt-2">BTC</span>
+                    </label>
+                </div>
+                <div class="custom-control check-switch custom-checkbox mr-4 mb-2">
+                    <input type="checkbox" class="custom-control-input" id="customCheck91">
+                    <label class="custom-control-label" for="customCheck91">
+                        <span class="d-block  font-w500 mt-2">XRP</span>
+                    </label>
+                </div>
+                <div class="custom-control check-switch custom-checkbox mr-4 mb-2">
+                    <input type="checkbox" class="custom-control-input" id="customCheck92">
+                    <label class="custom-control-label" for="customCheck92">
+                        <span class="d-block font-w500 mt-2">ETH</span>
+                    </label>
+                </div>
+                <div class="custom-control check-switch custom-checkbox mr-4 mb-2">
+                    <input type="checkbox" class="custom-control-input" id="customCheck93">
+                    <label class="custom-control-label" for="customCheck93">
+                        <span class="d-block font-w500 mt-2">ZEC</span>
+                    </label>
+                </div>
+            </div>
+            <mat-form-field   class="form-control style-1 default-select  mr-3 style-2 mb-3 dashboard-select">
+              <mat-select value="Weekly (2021)">
+                <mat-option value="Weekly (2021)">Weekly (2021)</mat-option>
+                <mat-option value="Daily (2021)">Weekly (2021)</mat-option>
+                <mat-option value="Yearly (2021)">Weekly (2021)</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="card-body pb-0">
+            <!-- <div id="marketChart" class="market-line"></div> -->
+            <div id="marketChart" class="market-line">
+            <apx-chart
+			id="lineChart"
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [dataLabels]="chartOptions.dataLabels"
+            [yaxis]="chartOptions.yaxis"
+            [labels]="chartOptions.labels"
+            [legend]="chartOptions.legend"
+            [title]="chartOptions.title"
+            [subtitle]="chartOptions.subtitle"
+            [colors]="chartOptions.colors"
+            [fill]="chartOptions.fill"
+            [tooltip]="chartOptions.tooltip"
+            [stroke]="chartOptions.stroke"
+            [grid]="chartOptions.grid"
+            [responsive]="chartOptions.responsive"
+          ></apx-chart>
+            
+            </div>
+            
+        </div>
+    </div>

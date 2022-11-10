@@ -1,0 +1,68 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row align-items-end">
+            <div class="col-xl-6 col-lg-12 col-xxl-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-4">
+                            <p class="mb-2">Card Name</p>
+                            <h4 class="text-black">Main Balance</h4>
+                        </div>
+                        <div class="mb-4">
+                            <p class="mb-2">Valid Date</p>
+                            <h4 class="text-black">08/21</h4>
+                        </div>
+                        <div>
+                            <p class="mb-2">Card Number</p>
+                            <h4 class="text-black">**** **** **** 1234</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-4">
+                            <p class="mb-2">Bank Name</p>
+                            <h4 class="text-black">ABC Center Bank</h4>
+                        </div>
+                        <div class="mb-4">
+                            <p class="mb-2">Card Holder</p>
+                            <h4 class="text-black">Marquezz Silalahi</h4>
+                        </div>
+                        <div>
+                            <p class="mb-2">Card Theme</p>
+                            <div class="btn-group theme-colors" data-toggle="buttons">
+                                <label class="btn btn-primary btn-sm {{themeClass == 'option5' ? 'active' : ''}}">
+                                        <input type="radio" class="position-absolute invisible" name="options" id="option5" (click)="toggleThemeClass('option5')"> <i class="las la-check-circle"></i>
+                                </label>
+                                <label class="btn btn-warning btn-sm {{themeClass == 'option1' ? 'active' : ''}}">
+                                    <input type="radio" class="position-absolute invisible" name="options" id="option1"  (click)="toggleThemeClass('option1')"><i class="las la-check-circle"></i>
+                                </label>
+                                <label class="btn btn-success btn-sm {{themeClass == 'option2' ? 'active' : ''}}">
+                                    <input type="radio" class="position-absolute invisible" name="options" id="option2" (click)="toggleThemeClass('option2')"> <i class="las la-check-circle"></i>
+                                </label>
+                                <label class="btn btn-info btn-sm {{themeClass == 'option3' ? 'active' : ''}}">
+                                    <input type="radio" class="position-absolute invisible" name="options" id="option3" (click)="toggleThemeClass('option3')"> <i class="las la-check-circle"></i>
+                                </label>
+                                <label class="btn btn-secondary btn-sm {{themeClass == 'option4' ? 'active' : ''}}">
+                                    <input type="radio" class="position-absolute invisible" name="options" id="option4" (click)="toggleThemeClass('option4')"> <i class="las la-check-circle"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-xxl-12 mb-lg-0 mb-3">
+                <p>Monthly Limits</p>
+                <div class="row monthly-charts">
+                    <div class="col-sm-4 mb-sm-0 mb-4 text-center">
+                        <app-graph-main-limits></app-graph-main-limits>
+                    </div>
+                    <div class="col-sm-4 mb-sm-0 mb-4 text-center">
+                        <app-graph-seconds></app-graph-seconds>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <app-graph-others></app-graph-others>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

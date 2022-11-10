@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header d-block d-sm-flex border-0 pb-sm-0 pb-0 align-items-center">
+        <div class="mr-auto mb-sm-0 mb-3">
+            <h4 class="fs-20 text-black">Coin Chart</h4>
+            <p class="mb-0 fs-12">Lorem ipsum dolor sit amet, consectetur</p>
+        </div>
+        
+        <mat-form-field   class="form-control style-1 default-select  mr-3 style-2 mb-3 dashboard-select">
+          <mat-select value="Monthly (2021)">
+            <mat-option value="Monthly (2021)">Monthly (2021)</mat-option>
+            <mat-option value="Daily (2021)">Weekly (2021)</mat-option>
+            <mat-option value="Weekly (2021)">Weekly (2021)</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="card-body pt-3">
+        <div class="flex-wrap mb-sm-4 mb-2 align-items-center">
+            <div class="d-flex align-items-center">
+                <span class="fs-32 text-black font-w600 pr-3">$557,235.31</span>
+                <span class="fs-22 text-success">7% <i class="fa fa-caret-up scale5 ml-2 text-success" aria-hidden="true"></i></span>
+            </div>
+            <p class="mb-0 text-black mr-auto">Last Week <span class="text-success">$563,443</span></p>
+        </div>
+        <!-- <div id="chartTimeline" class="timeline-chart"></div> -->
+        
+        <apx-chart class="timeline-chart"
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [dataLabels]="chartOptions.dataLabels"
+            [plotOptions]="chartOptions.plotOptions"
+            [yaxis]="chartOptions.yaxis"
+            [legend]="chartOptions.legend"
+            [fill]="chartOptions.fill"
+            [stroke]="chartOptions.stroke"
+            [tooltip]="chartOptions.tooltip"
+            [xaxis]="chartOptions.xaxis"
+            [colors]="chartOptions.colors"
+            [responsive]="chartOptions.responsive"
+            [grid]="chartOptions.grid"
+        ></apx-chart>
+    </div>
+</div>

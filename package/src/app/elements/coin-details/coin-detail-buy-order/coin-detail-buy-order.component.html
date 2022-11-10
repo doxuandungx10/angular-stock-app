@@ -1,0 +1,41 @@
+<div class="card">
+    <div class="card-header border-0 pb-0">
+        <h4 class="mb-0 text-black fs-20">Buy Order</h4>
+        <div class="dropdown custom-dropdown mb-0 tbl-orders-style dropdown-no-icon" ngbDropdown>
+            <div class="btn sharp tp-btn" data-toggle="dropdown" ngbDropdownToggle>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-3">
+        <div class="table-responsive">
+            <table class="table text-center bg-warning-hover tr-rounded order-tbl">
+                <thead>
+                    <tr>
+                        <th class="text-left">Price</th>
+                        <th class="text-center">Amount</th>
+                        <th class="text-right">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data">
+                        <td class="text-left">{{item.price}}</td>
+                        <td>{{item.amount}}</td>
+                        <td class="text-right">{{item.total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer border-0 p-0 caret">
+        <a [routerLink]="['/admin/coin-details']" class="btn-link"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+    </div>
+</div>

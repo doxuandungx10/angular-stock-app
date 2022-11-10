@@ -1,0 +1,90 @@
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="form-head mb-5">
+            <h2 class="font-w600 mb-0">Portofolio</h2>
+        </div>
+        <div class="row">
+            <div class="col-xl-9 col-xxl-8">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header border-0 pb-0">
+                                <h4 class="mb-0 fs-20 text-black">Coin Holding</h4>
+                                <div class="dropdown custom-dropdown mb-0 tbl-orders-style dropdown-no-icon" ngbDropdown>
+                                    <div class="btn sharp tp-btn" data-toggle="dropdown" ngbDropdownToggle>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                        <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                                        <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="{{item.wrapper_class}} coin-holding flex-wrap" *ngFor="let item of coinHolding; let i = index" [ngClass]="{'mt-4': i > 0}">
+                                    <div class="mb-2 coin-bx">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <img src="{{item.image}}" />
+                                            </div>
+                                            <div class="ml-3">
+                                                <h4 class="coin-font font-w600 mb-0 text-white">{{item.name}}</h4>
+                                                <p class="mb-0 text-white op-6">{{item.short_name}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="coin-bx-one">
+                                                <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="4.71425" height="34.5712" rx="2.35713" transform="matrix(-1 0 0 1 33 0)" fill="white"/>
+                                                    <rect width="4.71425" height="25.1427" rx="2.35713" transform="matrix(-1 0 0 1 23.5713 9.42853)" fill="white"/>
+                                                    <rect width="4.71425" height="10.9999" rx="2.35713" transform="matrix(-1 0 0 1 14.1436 23.5713)" fill="white"/>
+                                                    <rect width="5.31864" height="21.2746" rx="2.65932" transform="matrix(-1 0 0 1 5.31836 13.2966)" fill="white"/>
+                                                </svg>
+                                            </div>	
+                                            <div class="ml-3">
+                                                <h2 class="mb-0 text-white coin-font-1">{{item.price}}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{item.varialtion_image}}" />
+                                            <p class="mb-0 ml-2 {{item.varialtion_class}}">{{item.price_varialtion}}</p>
+                                            <p class="mb-0 ml-2 font-w400 text-white">This Week</p>	
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-xxl-12">
+                        <app-my-activity></app-my-activity>	
+                    </div>
+                    <div class="col-xl-4 col-xxl-12">
+                        <div class="row">
+                            <div class="col-xl-12 m-t25">
+                                <app-current-graph1></app-current-graph1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-4">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-6 col-sm-6">
+                        <app-my-profile></app-my-profile>
+                    </div>
+                    <div class="col-xl-12 col-lg-6 col-sm-6">
+                        <app-current-graph2></app-current-graph2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

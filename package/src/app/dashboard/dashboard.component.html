@@ -1,0 +1,103 @@
+
+    
+    
+    
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="form-head mb-lg-5 mb-3 d-flex flex-wrap align-items-center">
+                <h2 class="font-w600 mb-3 mr-auto ">Dashboard</h2>
+                <div class="weather-btn mb-2">
+                    <span class="mr-3 fs-22 font-w600 text-black"><i class="fa fa-cloud mr-2"></i>21</span>
+                    <mat-form-field   class="dashboard-select">
+                      <mat-select value="Medan, IDN">
+                        <mat-option value="Medan, IDN">Medan, IDN</mat-option>
+                        <mat-option value="Jakarta, IDN">Jakarta, IDN</mat-option>
+                        <mat-option value="Surabaya, IDN">Surabaya, IDN</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+                <a href="javascript:void(0);" class="btn btn-secondary text-white mb-2"><i class="las la-calendar scale5 mr-3"></i>Filter Periode</a>
+            </div>
+            <div class="row sp-sm-15">
+                <div class="col-xl-3 col-6 m-t35"  *ngFor="let item of topCrypto">
+                    <div class="card card-coin">
+                        <div class="card-body text-center">
+                            <img src="{{item.image}}" class="mb-sm-3 mb-2 currency-icon"/>
+                            <h2 class="text-black mb-2 font-w600">{{item.price}}</h2>
+                            <p class="mb-0 fs-14">
+                                <svg  width="29" height="22" viewBox="0 0 29 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g filter="url(#filter0_d1)">
+										<path d="M5 16C5.91797 14.9157 8.89728 11.7277 10.5 10L16.5 13L23.5 4" stroke="#2BC155" stroke-width="2" stroke-linecap="round"/>
+                                    </g>
+                                    <defs>
+										<filter id="filter0_d1" x="-3.05176e-05" y="-6.10352e-05" width="28.5001" height="22.0001" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                                            <feOffset dy="1"/>
+                                            <feGaussianBlur stdDeviation="2"/>
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0.172549 0 0 0 0 0.72549 0 0 0 0 0.337255 0 0 0 0.61 0"/>
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                                        </filter>
+                                    </defs>
+                                </svg>
+                                <span class="text-success mr-1">{{item.up_down}}</span>{{item.time_period}}
+                            </p>	
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-xl-9 col-xxl-8">
+                    <app-graph-market-overview></app-graph-market-overview>
+                </div>
+                <div class="col-xl-3 col-xxl-4">
+                    <app-graph-current-statistic></app-graph-current-statistic>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-xxl-12">
+                    <app-quick-trade></app-quick-trade>
+                </div>
+                <div class="col-xl-6 col-xxl-12">
+                    <div class="row">
+                        <div class="col-sm-6" *ngFor="let item of cryptoCards">
+                            <div class="card-bx stacked card">
+                                <img class="bg-img" src="{{item.image}}" alt="">
+                                <div class="card-info">
+                                    <p class="mb-1 text-white fs-14">Main Balance</p>
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h2 class="num-text text-white mb-5 font-w600">{{item.price}}</h2>
+                                        <img src="{{item.icon_image}}" alt="">
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="mr-4 text-white">
+                                            <p class="fs-12 mb-1 op6">VALID THRU</p>
+                                            <span>{{item.valid_thrugh}}</span>
+                                        </div>
+                                        <div class="text-white">
+                                            <p class="fs-12 mb-1 op6">CARD HOLDER</p>
+                                            <span>{{item.name}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                           <app-recent-trading-activities></app-recent-trading-activities> 
+                        </div>
+                        <div class="col-xl-12 mt-2">
+                            <app-quick-transfer-crousal [data]="quickTransfer"></app-quick-transfer-crousal>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->

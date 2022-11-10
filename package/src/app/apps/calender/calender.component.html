@@ -1,0 +1,85 @@
+<!--**********************************
+	Content body start
+***********************************-->
+<div class="content-body">
+	<div class="container-fluid">
+		<div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <p class="mb-0">Your business dashboard template</p>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">App</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Calender</a></li>
+                </ol>
+            </div>
+        </div>
+		<!-- row -->
+		
+		
+		<div class="row">
+			<div class="col-xl-3 col-xxl-4">
+				<div class="card">
+					<div class="card-body">
+						<div>
+							<h4 class="card-intro-title mb-3">Instructions</h4>
+							<div class="basic-list-group calendar-list">
+								<ul class="list-group">
+									<li class="list-group-item list-group-item-action">Select dates and you will be prompted to create a new event</li>
+									<li class="list-group-item list-group-item-action">Drag, drop, and resize events</li>
+									<li class="list-group-item list-group-item-action" >Click an event to delete it</li>
+								</ul>
+							</div>
+						</div>
+						<div class="demo-app-sidebar-section calendar-checkbox">
+							<label>
+								<input
+								type='checkbox'
+								[checked]='calendarVisible'
+								(change)='handleCalendarToggle()'
+								/>
+								toggle whole calendar
+							</label>
+						</div>
+						<div class="demo-app-sidebar-section calendar-checkbox">
+							<label>
+								<input
+								type='checkbox'
+								[checked]='calendarOptions.weekends'
+								(change)='handleWeekendsToggle()'
+								/>
+								toggle weekends
+							</label>
+						</div>
+						<div class="demo-app-sidebar-section calendar-description">
+							<h2>All Events ({{currentEvents.length}})</h2>
+							<ul>
+								<li *ngFor='let event of currentEvents'>
+									<b>{{event.startStr}}</b>
+									<i>{{event.title}}</i>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-9 col-xxl-8">
+				<div class="card">
+					<div class="card-body">
+						<full-calendar class="dashboard-full-calendar"
+						*ngIf='calendarVisible'
+						[options]='calendarOptions'
+						></full-calendar>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<!--**********************************
+	Content body end
+***********************************-->

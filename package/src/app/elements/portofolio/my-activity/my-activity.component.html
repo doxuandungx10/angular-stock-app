@@ -1,0 +1,106 @@
+<div class="card">
+    <div class="card-header pb-2 d-block d-sm-flex flex-wrap border-0">
+        <div class="mb-3">
+            <h4 class="fs-20 text-black">My Activity</h4>
+            <p class="mb-0 fs-13">Lorem ipsum dolor sit amet, consectetur</p>
+        </div>
+        <div class="card-action card-tabs mb-3 style-1">
+            <ul class="nav nav-tabs" role="tablist" ngbNav #nav="ngbNav" >
+                <li class="nav-item" ngbNavItem="Monthly">
+                    <a class="nav-link" data-toggle="tab" href="#Monthly" role="tab" aria-selected="false" ngbNavLink>
+                        Monthly	
+                    </a>
+                    <ng-template ngbNavContent>
+                        <div class="table-responsive">
+                            <table class="table shadow-hover card-table border-no tbl-btn short-one">
+                                <tbody>
+                                    <tr *ngFor="let item of tableData">
+                                        <td>
+                                            <img src="{{item.image}}" />
+                                        </td>
+                                        <td>
+                                            <span class="font-w600 text-black">{{item.type}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-black">{{item.time}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="font-w600 text-black">{{item.price}}</span>
+                                        </td>
+                                        <td><a class="btn-link float-right {{item.status_class}}" href="javascript:void(0);">{{item.status}}</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                </li>
+                <li class="nav-item" ngbNavItem="Weekly">
+                    <a class="nav-link" data-toggle="tab" href="#Weekly" role="tab" aria-selected="false" ngbNavLink>
+                        Weekly
+                    </a>
+                    <ng-template ngbNavContent>
+                        <div class="table-responsive">
+                            <table class="table shadow-hover card-table border-no tbl-btn short-one">
+                                <tbody>
+                                    <tr *ngFor="let item of tableData">
+                                        <td>
+                                            <img src="{{item.image}}" />
+                                        </td>
+                                        <td>
+                                            <span class="font-w600 text-black">{{item.type}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-black">{{item.time}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="font-w600 text-black">{{item.price}}</span>
+                                        </td>
+                                        <td><a class="btn-link float-right {{item.status_class}}" href="javascript:void(0);">{{item.status}}</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </ng-template>
+                </li>
+                <li class="nav-item" ngbNavItem="Today">
+                    <a class="nav-link" data-toggle="tab" href="#Today" role="tab" aria-selected="false" ngbNavLink>
+                        Today
+                    </a>
+                    <ng-template ngbNavContent>
+                        <div class="table-responsive">
+                            <table class="table shadow-hover card-table border-no tbl-btn short-one">
+                                <tbody>
+                                    <tr *ngFor="let item of tableData">
+                                        <td>
+                                            <img src="{{item.image}}" />
+                                        </td>
+                                        <td>
+                                            <span class="font-w600 text-black">{{item.type}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-black">{{item.time}}</span>
+                                        </td>
+                                        <td>
+                                            <span class="font-w600 text-black">{{item.price}}</span>
+                                        </td>
+                                        <td><a class="btn-link float-right {{item.status_class}}" href="javascript:void(0);">{{item.status}}</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div class="card-body p-0">
+        <div [ngbNavOutlet]="nav" class=""></div>
+    </div>
+    
+    <div class="card-footer border-0 p-0 caret">
+        <a [routerLink]="['/admin/coin-details']" class="btn-link mt-1"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+    </div>
+</div>	

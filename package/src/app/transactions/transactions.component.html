@@ -1,0 +1,76 @@
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="form-head d-flex align-items-center flex-wrap mb-3">
+            <h2 class="font-w600 mb-0 text-black">Tranasactions</h2>
+            <a href="javascript:void(0);" class="btn btn-outline-secondary ml-auto"><i class="las la-calendar scale5 mr-2"></i>Filter Periode</a>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="table-responsive table-hover fs-14">
+                    <table class="table display mb-4 dataTablesCard dataTable  short-one card-table text-black" id="example5">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="checkbox mr-0 align-self-center">
+                                        <div class="custom-control custom-checkbox ">
+                                            <input type="checkbox" class="custom-control-input" id="checkAll" required="">
+                                            <label class="custom-control-label" for="checkAll"></label>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th>Transaction ID</th>
+                                <th>Date</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Coin</th>
+                                <th>Amount</th>
+                                <th>Note</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transaction of transactions; let i= index">
+                                <td class="pr-0">
+                                    <img class="ic-icon" src="{{transaction.image}}" />
+                                </td>
+                                <td>{{transaction.trans_id}}</td>
+                                <td>{{transaction.trans_date}}</td>
+                                <td>{{transaction.from}}</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{transaction.user_image}}"  class="rounded-circle mr-2 width36 height36" alt="">
+                                        <span>{{transaction.to}}</span>
+                                    </div>
+                                </td>
+                                <td class="wspace-no">
+                                    <img src="{{transaction.coin_image}}" class="mr-1"/>
+                                    <span class="text-black">{{transaction.coin}}</span>
+                                </td>
+                                <td>
+                                    <span class="text-black font-w600">{{transaction.amount}}</span>
+                                </td>
+                                <td>
+                                    <p class="mb-0 wspace-no">{{transaction.note}}</p>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0);" class="btn-link {{transaction.status_class}} float-right">{{transaction.status}}</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="d-flex justify-content-between p-2">
+                        <ngb-pagination class="mr-3" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="updateTransactionListing()">
+                        </ngb-pagination>
+                        
+                        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="updateTransactionListing()">
+                            <option [ngValue]="5">5 items per page</option>
+                            <option [ngValue]="10">10 items per page</option>
+                            <option [ngValue]="20">20 items per page</option>
+                        </select>
+                    </div>
+                </div>	
+            </div>
+        </div>
+    </div>
+</div>

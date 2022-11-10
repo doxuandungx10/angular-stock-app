@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header pb-0 border-0">
+        <h4 class="mb-0 text-black fs-20">About</h4>
+        <div class="dropdown custom-dropdown mb-0 dropdown-no-icon" ngbDropdown>
+            <div class="btn sharp pr-0 tp-btn" data-toggle="dropdown" ngbDropdownToggle>
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.0049 13C12.5572 13 13.0049 12.5523 13.0049 12C13.0049 11.4477 12.5572 11 12.0049 11C11.4526 11 11.0049 11.4477 11.0049 12C11.0049 12.5523 11.4526 13 12.0049 13Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.0049 6C12.5572 6 13.0049 5.55228 13.0049 5C13.0049 4.44772 12.5572 4 12.0049 4C11.4526 4 11.0049 4.44772 11.0049 5C11.0049 5.55228 11.4526 6 12.0049 6Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.0049 20C12.5572 20 13.0049 19.5523 13.0049 19C13.0049 18.4477 12.5572 18 12.0049 18C11.4526 18 11.0049 18.4477 11.0049 19C11.0049 19.5523 11.4526 20 12.0049 20Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                <a class="dropdown-item" href="javascript:void(0);">Details</a>
+                <a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body height400 dz-scroll" id="about-1" [perfectScrollbar]>
+        <div class="d-flex align-items-start mb-3 about-coin">
+            <div>
+                <img src="{{data.image}}" alt="">
+            </div>
+            <div class="ml-3">
+                <h2 class="font-w600 text-black mb-0 title">Digital Cash</h2>
+                <p class="font-w600 text-black sub-title">{{data.coin_name}}</p>
+                <span>{{data.per_coin_price}}</span>
+            </div>	
+        </div>
+        <div [innerHTML]="data.description"></div>
+    </div>
+    <div class="card-footer border-0 p-0 caret">
+        <a [routerLink]="['/admin/coin-details']" class="btn-link"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+    </div>
+</div>
