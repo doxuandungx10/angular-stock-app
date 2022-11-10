@@ -1,0 +1,1 @@
+{"version":3,"file":"nestable.module.d.ts","sources":["nestable.module.d.ts"],"names":[],"mappings":";;;;;AAAA;;;;AACA","sourcesContent":["export declare class NestableModule {\n}\n"]}
