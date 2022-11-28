@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-    
+
     public currentHref: string = "";
 
 
@@ -25,13 +25,13 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   toggleIcon: boolean = true;
-  
+
     toggleLoveIcon() {
         this.toggleIcon = !this.toggleIcon;
     }
-    
+
     dashboardArray = [
          '/admin',
          '/admin/index',
@@ -40,9 +40,9 @@ export class NavigationComponent implements OnInit {
          '/admin/coin-details',
          '/admin/portofolio',
          '/admin/market-capital',
-         
+
 	];
-    
+
     apsArray = [
          '/admin/app-profile',
          '/admin/post-details',
@@ -57,9 +57,9 @@ export class NavigationComponent implements OnInit {
          '/admin/ecom-checkout',
          '/admin/ecom-invoice',
          '/admin/ecom-customers',
-         
+
 	];
-    
+
     chartsArray = [
          '/admin/chart-chartjs',
          '/admin/chart-apex',
@@ -80,7 +80,7 @@ export class NavigationComponent implements OnInit {
          '/admin/apex-treemap',
          '/admin/apex-sparklines',
 	];
-    
+
     bootstrapArray = [
          '/admin/ui-accordion',
          '/admin/ui-alert',
@@ -107,7 +107,7 @@ export class NavigationComponent implements OnInit {
          '/admin/ui-typeahead',
          '/admin/ui-grid',
 	];
-    
+
     materialArray = [
          '/admin/mat-autocomplete',
          '/admin/mat-badge',
@@ -145,12 +145,12 @@ export class NavigationComponent implements OnInit {
          '/admin/mat-tree',
          '/admin/mat-toolbar',
 	];
-    
+
     pluginsArray = [
          '/admin/uc-nestable',
          '/admin/uc-lightgallery',
 	];
-    
+
     formsArray = [
          '/admin/form-element',
          '/admin/form-validate',

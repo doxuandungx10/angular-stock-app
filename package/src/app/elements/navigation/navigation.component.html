@@ -3,34 +3,34 @@
 ***********************************-->
 <div class="deznav">
     <div class="deznav-scroll" [perfectScrollbar]>
-        <div class="main-profile">
+        <!-- <div class="main-profile">
             <img src="assets/images/Untitled-1.jpg" alt="">
             <a href="javascript:void(0);"><i class="fa fa-cog" aria-hidden="true"></i></a>
             <h5 class="mb-0 fs-20 text-black "><span class="font-w400">Hello,</span> Marquez</h5>
             <p class="mb-0 fs-14 font-w400">marquezzzz@mail.com</p>
-        </div>
+        </div> -->
         <ul class="metismenu" id="menu" metis-menu>
             <li [ngClass]="{'mm-active': dashboardArray.indexOf(currentHref) > -1}">
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                <a [routerLink]="['/admin/index']" href="javascript:void()">
                     <i class="flaticon-144-layout"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
                 <ul aria-expanded="false"  [ngClass]="{'mm-show': dashboardArray.indexOf(currentHref) > -1}">
-                    <li><a class="{{(currentHref == '/admin/index' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/index']">Dashboard</a></li>
-                    <li><a [routerLink]="['/admin/my-wallets']" class="{{(currentHref == '/admin/my-wallets') ? 'mm-active' : ''}}">Wallet</a></li>
+                    <!-- <li><a class="{{(currentHref == '/admin/index' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/index']">Dashboard</a></li> -->
+                    <!-- <li><a [routerLink]="['/admin/my-wallets']" class="{{(currentHref == '/admin/my-wallets') ? 'mm-active' : ''}}">Wallet</a></li>
                     <li><a [routerLink]="['/admin/transactions']" class="{{(currentHref == '/admin/transactions') ? 'mm-active' : ''}}">Transactions</a></li>
                     <li><a [routerLink]="['/admin/coin-details']" class="{{(currentHref == '/admin/coin-details') ? 'mm-active' : ''}}">Coin Details</a></li>
                     <li><a [routerLink]="['/admin/portofolio']" class="{{(currentHref == '/admin/portofolio') ? 'mm-active' : ''}}">Portofolio</a></li>
-                    <li><a [routerLink]="['/admin/market-capital']" class="{{(currentHref == '/admin/market-capital') ? 'mm-active' : ''}}">Market Capital</a></li>
+                    <li><a [routerLink]="['/admin/market-capital']" class="{{(currentHref == '/admin/market-capital') ? 'mm-active' : ''}}">Market Capital</a></li> -->
                 </ul>
-            
+
             </li>
             <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > -1}">
-                <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                <a [routerLink]="['/admin/app-profile']" href="javascript:void()">
                     <i class="flaticon-077-menu-1"></i>
-                    <span class="nav-text">Apps</span>
+                    <span class="nav-text">Stock board</span>
                 </a>
-                <ul aria-expanded="false" [ngClass]="{'mm-show': apsArray.indexOf(currentHref) > -1}">
+                <!-- <ul aria-expanded="false" [ngClass]="{'mm-show': apsArray.indexOf(currentHref) > -1}">
                     <li><a [routerLink]="['/admin/app-profile']" class="{{(currentHref == '/admin/app-profile') ? 'mm-active' : ''}}">Profile</a></li>
                     <li><a [routerLink]="['/admin/post-details']" class="{{(currentHref == '/admin/post-details') ? 'mm-active' : ''}}">Post Details</a></li>
                     <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > 1 && apsArray.indexOf(currentHref) < 5}"><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
@@ -52,9 +52,21 @@
                             <li><a [routerLink]="['/admin/ecom-customers']" class="{{(currentHref == '/admin/ecom-customers') ? 'mm-active' : ''}}">Customers</a></li>
                         </ul>
                     </li>
-                </ul>
+                </ul> -->
             </li>
-            <li [ngClass]="{'mm-active': chartsArray.indexOf(currentHref) > -1}">
+            <li>
+              <a [routerLink]="['/admin/app-profile']" href="javascript:void()">
+                <i class="flaticon-061-puzzle"></i>
+                <span class="nav-text">Watchlist</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['/admin/portofolio']" href="javascript:void()">
+                <i class="flaticon-144-layout"></i>
+                <span class="nav-text">Portfolio</span>
+              </a>
+            </li>
+            <!-- <li [ngClass]="{'mm-active': chartsArray.indexOf(currentHref) > -1}">
                 <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-061-puzzle"></i>
                     <span class="nav-text">Charts</span>
@@ -81,8 +93,8 @@
                             <li><a [routerLink]="['/admin/apex-treemap']" class="{{(currentHref == '/admin/apex-treemap') ? 'mm-active' : ''}}">Treemap Charts</a></li>
                             <li><a [routerLink]="['/admin/apex-sparklines']" class="{{(currentHref == '/admin/apex-sparklines') ? 'mm-active' : ''}}">Sparklines</a></li>
                         </ul>
-                        
-                        
+
+
                     </li>
                     <li><a [routerLink]="['/admin/chart-chartjs']" class="{{(currentHref == '/admin/index-2') ? 'mm-active' : ''}}">Chartjs</a></li>
                 </ul>
@@ -209,12 +221,12 @@
                     </li>
                     <li><a [routerLink]="['/page-lock-screen']">Lock Screen</a></li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
-        <div class="copyright">
+        <!-- <div class="copyright">
             <p><strong>Zenix Crypto Admin Dashboard</strong> © 2021 All Rights Reserved</p>
             <p class="fs-12">Made with <span [ngClass]="{'': toggleIcon, 'heart-blast': !toggleIcon}" class="heart" (click)="toggleLoveIcon()"></span> by DexignZone</p>
-        </div>
+        </div> -->
     </div>
 </div>
 <!--**********************************
