@@ -1,0 +1,17 @@
+{
+  "api": {
+    "baseUrl": "https://be.mine.stc.vn",
+    "emulatorUrl": "https://localhost:44319"
+  },
+  "sso": {
+    "baseUrl": "http://10.33.68.71:8888/vnpt-sso"
+  },
+  "pageSize": [
+    10,
+    20,
+    50,
+    100
+  ],
+  "page": 1,
+  "defaultPage": 20
+}

@@ -7,10 +7,11 @@
                         <div class="col-xl-12">
                             <div class="auth-form">
                                 <div class="text-center mb-3">
-                                    <a [routerLink]="['/admin/index']"><img src="assets/images/logo-full.png" alt=""></a>
+                                    <a [routerLink]="['/admin/index']">Stock application</a>
                                 </div>
                                 <h4 class="text-center mb-4">Sign in your account</h4>
-                                <form action="['/admin/index']">
+                                <!-- <form action="['/admin/index']"> -->
+                                <form action="['/admin/index']" [formGroup]="validateForm" novalidate="novalidate" (ngSubmit)="onSubmit()">
                                     <div class="form-group">
                                         <label class="mb-1"><strong>Email</strong></label>
                                         <input type="email" class="form-control" value="hello@example.com">

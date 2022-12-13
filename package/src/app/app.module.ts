@@ -1,8 +1,10 @@
+import { AppConfigService } from './../app-config.service';
+import { NotificationService } from './service/notification.service';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { Injectable } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-  
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -150,8 +152,8 @@ import { OrderComponent } from './apps/shop/order/order.component';
 import { CheckoutComponent } from './apps/shop/checkout/checkout.component';
 import { InvoiceComponent } from './apps/shop/invoice/invoice.component';
 import { EcomCustomersComponent } from './apps/shop/ecom-customers/ecom-customers.component';
-  
-  
+
+
 import { ApexComponent } from './charts/apex/apex.component';
 import { LineComponent } from './charts/apex/line/line.component';
 import { BasicLineChartComponent } from './charts/apex/line/basic-line-chart/basic-line-chart.component';
@@ -255,7 +257,7 @@ import { ChartjsDoughnutComponent } from './charts/chartjs/chartjs-doughnut/char
 import { ChartjsRadarComponent } from './charts/chartjs/chartjs-radar/chartjs-radar.component';
 import { ChartjsPieComponent } from './charts/chartjs/chartjs-pie/chartjs-pie.component';
 import { ChartjsBubbleComponent } from './charts/chartjs/chartjs-bubble/chartjs-bubble.component';
-  
+
 import { AccordionComponent } from './bootstrap/accordion/accordion.component';
 import { AccordionBasicComponent } from './bootstrap/accordion/accordion-basic/accordion-basic.component';
 import { AccordionStaticComponent } from './bootstrap/accordion/accordion-static/accordion-static.component';
@@ -417,8 +419,8 @@ import { TypeaheadConfigComponent } from './bootstrap/typeahead/typeahead-config
 import { CardsComponent } from './bootstrap/cards/cards.component';
 import { TypographyComponent } from './bootstrap/typography/typography.component';
 import { GridComponent } from './bootstrap/grid/grid.component';
- 
-  
+
+
 import { DzmtAutocompleteComponent } from './material/dzmt-autocomplete/dzmt-autocomplete.component';
 import { DzmtAutocompleteDisplayComponent } from './material/dzmt-autocomplete/dzmt-autocomplete-display/dzmt-autocomplete-display.component';
 import { DzmtAutocompleteFilterComponent } from './material/dzmt-autocomplete/dzmt-autocomplete-filter/dzmt-autocomplete-filter.component';
@@ -652,7 +654,7 @@ import { DzmtToolbarComponent } from './material/dzmt-toolbar/dzmt-toolbar.compo
 import { BasicToolbarComponent } from './material/dzmt-toolbar/basic-toolbar/basic-toolbar.component';
 import { MultiRowToolbarComponent } from './material/dzmt-toolbar/multi-row-toolbar/multi-row-toolbar.component';
 import { ToolbarOverviewComponent } from './material/dzmt-toolbar/toolbar-overview/toolbar-overview.component';
-  
+
 import { NestableComponent } from './plugins/nestable/nestable.component';
 import { LightGalleryComponent } from './plugins/light-gallery/light-gallery.component';
 
@@ -704,14 +706,26 @@ import { Error403Component } from './pages/error403/error403.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { Error500Component } from './pages/error500/error500.component';
 import { Error503Component } from './pages/error503/error503.component';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
+import {
+  APP_INITIALIZER,
+  CUSTOM_ELEMENTS_SCHEMA
+} from '@angular/core';
 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+};
 
+export function configServiceFactory(config: AppConfigService) {
+  return () => config.load();
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     NgbdSortableHeader,
-    
+
     AdminComponent,
     HeaderComponent,
     LoadingComponent,
@@ -727,8 +741,8 @@ import { Error503Component } from './pages/error503/error503.component';
     QuickTradeComponent,
     RecentTradingActivitiesComponent,
     QuickTransferCrousalComponent,
-    
-    
+
+
     MyWalletsComponent,
     CardSwiperComponent,
     WalleActivityComponent,
@@ -737,39 +751,39 @@ import { Error503Component } from './pages/error503/error503.component';
     GraphSecondsComponent,
     GraphOthersComponent,
     GraphCoinChartComponent,
-    
+
     TransactionsComponent,
-    
+
     CoinDetailsComponent,
     AboutComponent,
     CoinChartComponent,
     CoinDetailQuickTradeComponent,
     CoinDetailSellOrderComponent,
     CoinDetailBuyOrderComponent,
-    
-    
+
+
     PortofolioComponent,
     MyProfileComponent,
     MyActivityComponent,
     CurrentGraph1Component,
     CurrentGraph2Component,
-    
+
     MarketCapitalComponent,
-    
+
     ProfileComponent,
     UserStatisticsComponent,
 	InterestComponent,
 	LatestNewsComponent,
 	HighlightsComponent,
-    
+
 	PostDetailsComponent,
-    
+
     ComposeComponent,
 	InboxComponent,
 	ReadComponent,
-    
+
     CalenderComponent,
-    
+
     ProductGridComponent,
 	ProductListComponent,
 	ProductDetailComponent,
@@ -777,7 +791,7 @@ import { Error503Component } from './pages/error503/error503.component';
 	CheckoutComponent,
 	InvoiceComponent,
 	EcomCustomersComponent,
-      
+
     ApexComponent,
     LineComponent,
     BasicLineChartComponent,
@@ -881,7 +895,7 @@ import { Error503Component } from './pages/error503/error503.component';
     ChartjsRadarComponent,
     ChartjsPieComponent,
     ChartjsBubbleComponent,
-      
+
     AccordionComponent,
     AccordionBasicComponent,
     AccordionStaticComponent,
@@ -889,17 +903,17 @@ import { Error503Component } from './pages/error503/error503.component';
     AccordionHeaderComponent,
     AccordionPreventchangeComponent,
     AccordionConfigComponent,
-    
+
     AlertComponent,
     AlertCloseableComponent,
     AlertBasicComponent,
     AlertSlefclosingComponent,
     AlertCustomComponent,
     AlertConfigComponent,
-    
+
 
     ButtonComponent,
-    
+
     ModalComponent,
     BasicModalComponent,
     ModalComponentComponent,
@@ -907,19 +921,19 @@ import { Error503Component } from './pages/error503/error503.component';
     ModalFocusComponent,
     ModalStackedComponent,
     ModalConfigComponent,
-    
+
     BadgeComponent,
-    
+
     ButtonGroupComponent,
-    
+
     ListGroupComponent,
-    
+
     CarouselComponent,
     CarouselBasicComponent,
     CarouselNavigationComponent,
     CarouselPauseComponent,
     CarouselConfigComponent,
-    
+
     DatepickerComponent,
     DatepickerBasicComponent,
     DatepickerPopupComponent,
@@ -935,7 +949,7 @@ import { Error503Component } from './pages/error503/error503.component';
     DatepickerPositiontargetComponent,
     DatepickerKeyboardComponent,
     DatepickerConfigComponent,
-    
+
     DropdownComponent,
     DropdownBasicComponent,
     DropdownManualComponent,
@@ -944,9 +958,9 @@ import { Error503Component } from './pages/error503/error503.component';
     DropdownContainerComponent,
     DropdownNavbarComponent,
     DropdownConfigComponent,
-    
+
     MediaObjectComponent,
-    
+
     NavComponent,
     NavMarkupComponent,
     NavVerticalComponent,
@@ -956,7 +970,7 @@ import { Error503Component } from './pages/error503/error503.component';
     NavCustomStyleComponent,
     NavConfigComponent,
     NavBasicComponent,
-    
+
     PaginationComponent,
     PaginationBasicComponent,
     PaginationAdvancedComponent,
@@ -965,7 +979,7 @@ import { Error503Component } from './pages/error503/error503.component';
     PaginationJustifyComponent,
     PaginationDisabledComponent,
     PaginationConfigComponent,
-    
+
     PopoverComponent,
     PopoverBasicComponent,
     PopoverTplcontentComponent,
@@ -977,7 +991,7 @@ import { Error503Component } from './pages/error503/error503.component';
     PopoverContainerComponent,
     PopoverCustomclassComponent,
     PopoverConfigComponent,
-    
+
     ProgressbarComponent,
     ProgressbarBasicComponent,
     ProgressbarTexttypesComponent,
@@ -986,7 +1000,7 @@ import { Error503Component } from './pages/error503/error503.component';
     ProgressbarLabelsComponent,
     ProgressbarHeightComponent,
     ProgressbarConfigComponent,
-    
+
     RatingComponent,
     RatingBasicComponent,
     RatingEventsComponent,
@@ -994,14 +1008,14 @@ import { Error503Component } from './pages/error503/error503.component';
     RatingDecimalComponent,
     RatingFormComponent,
     RatingConfigComponent,
-    
+
     TableComponent,
     TableBasicComponent,
     TableSortableComponent,
     TableFilteringComponent,
     TablePaginationComponent,
     TableCompleteComponent,
-    
+
     TimepickerComponent,
     TimepickerBasicComponent,
     TimepickerMeridianComponent,
@@ -1012,7 +1026,7 @@ import { Error503Component } from './pages/error503/error503.component';
     TimepickerAdapterComponent,
     TimepickerI18nComponent,
     TimepickerConfigComponent,
-    
+
     ToastComponent,
     ToastInlineComponent,
     ToastCustomComponent,
@@ -1020,7 +1034,7 @@ import { Error503Component } from './pages/error503/error503.component';
     ToastPreventAutohideComponent,
     ToastGlobalComponent,
     ToastsContainer,
-    
+
     TooltipComponent,
     TooltipBasicComponent,
     TooltipTplcontentComponent,
@@ -1031,7 +1045,7 @@ import { Error503Component } from './pages/error503/error503.component';
     TooltipContainerComponent,
     TooltipCustomclassComponent,
     TooltipConfigComponent,
-    
+
     TypeaheadComponent,
     TypeaheadBasicComponent,
     TypeaheadFocusComponent,
@@ -1040,11 +1054,11 @@ import { Error503Component } from './pages/error503/error503.component';
     TypeaheadTemplateComponent,
     TypeaheadPreventManualEntryComponent,
     TypeaheadConfigComponent,
-    
+
     CardsComponent,
     TypographyComponent,
     GridComponent,
-      
+
     DzmtAutocompleteComponent,
     DzmtAutocompleteDisplayComponent,
     DzmtAutocompleteFilterComponent,
@@ -1053,35 +1067,35 @@ import { Error503Component } from './pages/error503/error503.component';
     DzmtAutocompleteOverviewComponent,
     DzmtAutocompletePlaneComponent,
     DzmtAutocompleteSimpleComponent,
-    
+
     DzmtBadgeComponent,
-    
+
     DzmtBottomSheetComponent,
     DzmtButtonComponent,
     DzmtButtonBasicComponent,
     DzmtButtonVarietiesComponent,
-    
+
     DzmtButtonToggleComponent,
     ButtonToggleAppearanceComponent,
     ButtonExclusiveSelectionComponent,
     ButtonWithFormsComponent,
     ButtonBasicTogglesComponent,
-    
+
     DzmtCardComponent,
     CardMultipleSectionsComponent,
     CardBasicComponent,
-    
+
     DzmtCheckboxComponent,
     ConfigurableCheckboxComponent,
     BasicCheckboxComponent,
-    
+
     DzmtChipsComponent,
     ChipsAutocompleteComponent,
     ChipsDragDropComponent,
     ChipsWithInputComponent,
     ChipsBasicComponent,
     ChipsStackedComponent,
-    
+
     DzmtDatepickerComponent,
     ComparisonRangesComponent,
     FormsIntegrationComponent,
@@ -1100,30 +1114,30 @@ import { Error503Component } from './pages/error503/error503.component';
     DatepickerStartDateComponent,
     DatepickerTouchUiComponent,
     DatepickerSelectedValueComponent,
-    
+
     DzmtDialogComponent,
     HeaderScrollbarActionComponent,
     DialogContentExampleDialog,
-    
+
     InjectingDataComponent,
     DialogDataExampleDialog,
-    
+
     DialogElementsComponent,
     DialogElementsExampleDialog,
-    
+
     DialogFromMenuComponent,
     DialogFromMenuExampleDialog,
-    
+
     DialogOverviewComponent,
     DialogOverviewExampleDialog,
-    
+
     DzmtDividerComponent,
-    
+
     DzmtExpansionComponent,
     ExpandCollapseAllTogglesComponent,
     BasicExpansionPanelComponent,
     ExpansionAsAccordionComponent,
-    
+
     DzmtFormFieldComponent,
     AppearanceVariantsComponent,
     FieldWithErrorMessagesComponent,
@@ -1132,14 +1146,14 @@ import { Error503Component } from './pages/error503/error503.component';
     SimpleFormFieldComponent,
     FieldWithPrefixSuffixComponent,
     FieldThemingComponent,
-    
+
     DzmtGridListComponent,
     DynamicGridListComponent,
     BasicGridListComponent,
-    
+
     DzmtIconComponent,
     SvgIconComponent,
-    
+
     DzmtInputComponent,
     InputWithClearButtonComponent,
     InputErrorStateMatcherComponent,
@@ -1148,23 +1162,23 @@ import { Error503Component } from './pages/error503/error503.component';
     InputsWithHintsComponent,
     InputsBasicComponent,
     InputsWithPrefixesSuffixesComponent,
-    
+
     DzmtListComponent,
     BasicListComponent,
     ListWithSectionsComponent,
     ListWithSelectionComponent,
     ListWithSingleSelectionComponent,
-    
+
     DzmtMenuComponent,
     MenuWithIconsComponent,
     NestedMenuComponent,
     BasicMenuComponent,
     MenuPositioningComponent,
-    
+
     DzmtPaginatorComponent,
     ConfigurablePaginatorComponent,
     BasicPaginatorComponent,
-    
+
     DzmtProgressBarComponent,
     BufferProgressBarComponent,
     ConfigurableProgressBarComponent,
@@ -1174,13 +1188,13 @@ import { Error503Component } from './pages/error503/error503.component';
     DzmtProgressSpinnerComponent,
     ConfigurableProgressSpinnerComponent,
     BasicProgressSpinnerComponent,
-    
+
     DzmtRadioComponent,
     RadiosWithNgModelComponent,
     RadiosBasicComponent,
-    
+
     DzmtRippleComponent,
-    
+
     DzmtSelectComponent,
     CustomTriggerTextComponent,
     DisabledSelectComponent,
@@ -1196,28 +1210,28 @@ import { Error503Component } from './pages/error503/error503.component';
     SelectInReactiveFormComponent,
     SelectWithResetOptionComponent,
     TwoWayValueBindingComponent,
-    
+
     DzmtSidenavComponent,
     AutosizeSidenavComponent,
     DrawerExplicitBackdropSettingComponent,
-    
+
     DzmtSlideToggleComponent,
     ConfigurableSlideToggleComponent,
     SlideToggleWithFormsComponent,
     SlideToggleBasicComponent,
-    
+
     DzmtSliderComponent,
     ConfigurableSliderComponent,
     CustomThumbLabelFormattingComponent,
     SliderBasicComponent,
-    
+
     DzmtSnackBarComponent,
     SnackBarCustomComponentComponent,
     BasicSnackBarComponent,
     SnackBarConfigurableComponent,
-    
+
     DzmtSortComponent,
-    
+
     DzmtStepperComponent,
     EditableStepsComponent,
     DisplaysErrorsInStepsComponent,
@@ -1226,7 +1240,7 @@ import { Error503Component } from './pages/error503/error503.component';
     StepperOverviewComponent,
     StepperCustomizedStatesComponent,
     StepperVerticalComponent,
-    
+
     DzmtTableComponent,
     BasicTableComponent,
     DynamicallyChangingColumnsDisplayedComponent,
@@ -1249,7 +1263,7 @@ import { Error503Component } from './pages/error503/error503.component';
     TableStickyHeaderComponent,
     TableWithConfigurationsInterfaceComponent,
     TableWithSimpleTextHeaderFooterComponent,
-    
+
     DzmtTabsComponent,
     AlignedLabelsComponent,
     TabGroupAnimationsComponent,
@@ -1263,7 +1277,7 @@ import { Error503Component } from './pages/error503/error503.component';
     TabsWithStretchedLabelsComponent,
     TabsWithThemeOptionsComponent,
     BasicUseOfTabNavBarComponent,
-    
+
     DzmtTooltipComponent,
     TooltipAutoHidingComponent,
     TooltipWithCustomClassComponent,
@@ -1274,7 +1288,7 @@ import { Error503Component } from './pages/error503/error503.component';
     TooltipWithHideShowDelayComponent,
     BasicTooltipComponent,
     TooltipWithCustomPositionComponent,
-    
+
     DzmtTreeComponent,
     TreeWithCheckboxesComponent,
     TreeWithCheckboxesComponent,
@@ -1282,15 +1296,15 @@ import { Error503Component } from './pages/error503/error503.component';
     TreeWithFlatNodesComponent,
     TreeWithPartiallyLoadedDataComponent,
     TreeWithNestedNodesComponent,
-    
+
     DzmtToolbarComponent,
     BasicToolbarComponent,
     MultiRowToolbarComponent,
     ToolbarOverviewComponent,
-      
+
     NestableComponent,
     LightGalleryComponent,
-      
+
     WidgetComponent,
     Timeline1Component,
     Timeline2Component,
@@ -1325,10 +1339,10 @@ import { Error503Component } from './pages/error503/error503.component';
     SalesStatusComponent,
     AllSales1Component,
     AllSales2Component,
-    
+
     ElementsComponent,
     FormValidateComponent,
-		
+
 	RegisterComponent,
 	LoginComponent,
 	LockScreenComponent,
@@ -1338,8 +1352,8 @@ import { Error503Component } from './pages/error503/error503.component';
 	Error404Component,
 	Error500Component,
 	Error503Component,
-    
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -1360,7 +1374,7 @@ import { Error503Component } from './pages/error503/error503.component';
     NgxDropzoneModule,
     CarouselModule,
     SwiperModule,
-    
+
     MatListModule,
     MatAutocompleteModule,
     MatFormFieldModule,
@@ -1400,7 +1414,25 @@ import { Error503Component } from './pages/error503/error503.component';
     MatTreeModule,
   ],
   providers: [
-		SharedService  
+		SharedService,
+    NotificationService,
+    AppConfigService,
+    {
+      provide: LocationStrategy,
+      useClass: PathLocationStrategy,
+    },
+    { provide: NZ_I18N, useValue: en_US },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: configServiceFactory,
+      deps: [AppConfigService],
+      multi: true,
+    },
+    Title,
   ],
   bootstrap: [AppComponent]
 })
