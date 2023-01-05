@@ -32,3 +32,23 @@ ngbd-table-filtering span.ngb-highlight {
 ngbd-table-complete span.ngb-highlight {
   background-color: yellow;
 }
+
+.status-d {
+  color: #FF373A;
+}
+.status-i {
+  color: #20FF00;
+}
+.status-e {
+  color: #FFC249;
+}
+.stock-r {
+  color: #FFC249;
+}
+.stock-c {
+  color: #FF25E5;
+}
+.stock-f {
+  color: #33EEEE;
+}
+

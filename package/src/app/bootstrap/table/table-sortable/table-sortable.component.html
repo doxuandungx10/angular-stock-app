@@ -1,4 +1,4 @@
-<p>You can introduce custom directives for table headers to sort columns</p>
+<!-- <p>You can introduce custom directives for table headers to sort columns</p>
 <div class="table-responsive">
 	<table class="table table-striped">
 	  <thead>
@@ -21,4 +21,79 @@
 	  </tr>
 	  </tbody>
 	</table>
+</div> -->
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" rowspan="2" sortable="symbol" (sort)="onSort($any($event))">Mã CK</th>
+        <th scope="col" rowspan="2" sortable="ref" (sort)="onSort($any($event))">T.C</th>
+        <th scope="col" rowspan="2" sortable="ceiling" (sort)="onSort($any($event))">Trần</th>
+        <th scope="col" rowspan="2" sortable="floor" (sort)="onSort($any($event))">Sàn</th>
+        <th class="text-center" scope="col" colspan="6" (sort)="onSort($any($event))">Bên mua</th>
+        <th class="text-center" scope="col" colspan="3" (sort)="onSort($any($event))">Khớp lệnh</th>
+        <th class="text-center" scope="col" colspan="6" (sort)="onSort($any($event))">Bên bán</th>
+        <th scope="col" rowspan="2" (sort)="onSort($any($event))">Tổng KL</th>
+        <th scope="col" rowspan="2" (sort)="onSort($any($event))">Dư mua</th>
+        <th scope="col" rowspan="2" (sort)="onSort($any($event))">Dư bán</th>
+        <th scope="col" rowspan="2" (sort)="onSort($any($event))">TB</th>
+        <th scope="col" rowspan="2" (sort)="onSort($any($event))">Cao</th>
+        <th scope="col" rowspan="2" (sort)="onSort($any($event))">Thấp</th>
+      </tr>
+      <tr>
+        <th scope="col" (sort)="onSort($any($event))">Giá 3</th>
+        <th scope="col" (sort)="onSort($any($event))">KL 3</th>
+        <th scope="col" (sort)="onSort($any($event))">Giá 2</th>
+        <th scope="col" (sort)="onSort($any($event))">KL 2</th>
+        <th scope="col" (sort)="onSort($any($event))">Giá 1</th>
+        <th scope="col" (sort)="onSort($any($event))">KL 1</th>
+
+        <th scope="col" (sort)="onSort($any($event))">Giá</th>
+        <th scope="col" (sort)="onSort($any($event))">KL</th>
+        <th scope="col" (sort)="onSort($any($event))">+/-</th>
+
+        <th scope="col" (sort)="onSort($any($event))">Giá 1</th>
+        <th scope="col" (sort)="onSort($any($event))">KL 1</th>
+        <th scope="col" (sort)="onSort($any($event))">Giá 2</th>
+        <th scope="col" (sort)="onSort($any($event))">KL 2</th>
+        <th scope="col" (sort)="onSort($any($event))">Giá 3</th>
+        <th scope="col" (sort)="onSort($any($event))">KL 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of stocks">
+        <th class="{{stock.statusColor}}" scope="row">{{ stock.sym }}</th>
+        <td class="stock-r">{{ stock.r | number }}</td>
+        <td class="stock-c">{{ stock.c | number }}</td>
+        <td class="stock-f">{{ stock.f | number }}</td>
+
+        <td class="status-{{stock.g1[2]}}">{{ stock.g1[0] | number }}</td>
+        <td class="status-{{stock.g1[2]}}">{{ stock.g1[1] | number }}</td>
+        <td class="status-{{stock.g2[2]}}">{{ stock.g2[0] | number }}</td>
+        <td class="status-{{stock.g2[2]}}">{{ stock.g2[1] | number }}</td>
+        <td class="status-{{stock.g3[2]}}">{{ stock.g3[0] | number }}</td>
+        <td class="status-{{stock.g3[2]}}">{{ stock.g3[1] | number }}</td>
+
+        <td class="{{stock.statusColor}}">{{ stock.lastPrice | number }}</td>
+        <td class="{{stock.statusColor}}">{{ stock.lastVolume | number }}</td>
+        <td class="{{stock.statusColor}}">{{ stock.ot | number }}</td>
+
+        <td class="status-{{stock.g4[2]}}">{{ stock.g4[1] | number }}</td>
+        <td class="status-{{stock.g4[2]}}">{{ stock.g4[1] | number }}</td>
+        <td class="status-{{stock.g5[2]}}">{{ stock.g5[1] | number }}</td>
+        <td class="status-{{stock.g5[2]}}">{{ stock.g5[1] | number }}</td>
+        <td class="status-{{stock.g6[2]}}">{{ stock.g6[1] | number }}</td>
+        <td class="status-{{stock.g6[2]}}">{{ stock.g6[1] | number }}</td>
+
+        <td>{{ stock.lot | number }}</td>
+        <td>0</td>
+        <td>0</td>
+        <td>{{ stock.avePrice | number }}</td>
+        <td>{{ stock.highPrice | number }}</td>
+        <td>{{ stock.lowPrice | number }}</td>
+
+      </tr>
+    </tbody>
+  </table>
 </div>

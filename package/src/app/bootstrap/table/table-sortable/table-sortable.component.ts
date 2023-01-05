@@ -1,3 +1,4 @@
+import { TableService } from '../../../service/general-service/table-sortable.service';
 import { Component,  Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 
 interface Country {
@@ -74,18 +75,47 @@ export class NgbdSortableHeader {
 @Component({
   selector: 'app-table-sortable',
   templateUrl: './table-sortable.component.html',
-  styleUrls: ['./table-sortable.component.css']
+  styleUrls: ['./table-sortable.component.css'],
+  providers: [TableService]
 })
 export class TableSortableComponent  {
+  @ViewChildren( NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
+  stocks: any[] = [];
+  sid: any = {};
+  countries = COUNTRIES;
 
-  constructor() { }
+  constructor(private tableService: TableService) { }
 
- 
-  
-  
-   countries = COUNTRIES;
+  ngOnInit() {
+    this.getStocks();
+    setInterval(() => this.getStocks(), 30000)
+  }
 
-  @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
+  getStocks(): void {
+    this.tableService.getData()
+      .subscribe((res:any) => {
+        this.stocks = res.map(el => ({
+          ...el,
+          g1: el.g1.split('|'),
+          g2: el.g2.split('|'),
+          g3: el.g3.split('|'),
+          g4: el.g4.split('|'),
+          g5: el.g5.split('|'),
+          g6: el.g6.split('|'),
+          g7: el.g7.split('|'),
+          statusColor: this.toTextColor(el)
+        }));
+        console.log(this.stocks);
+      });
+  }
+
+  toTextColor(data: any) {
+    if (data.lastPrice > data.c) return 'stock-c' // khớp lệnh == trần => tím
+    else if (data.lastPrice - data.f == 0) return 'stock-f' // khớp lệnh == sàn => xanh dương
+    else if (data.lastPrice - data.r == 0) return 'stock-r' // khớp lệnh == t.c => vàng
+    else if (data.lastPrice > data.r) return 'status-i' // khớp lệnh > t.c => xanh
+    else if (data.lastPrice < data.r) return 'status-d' // khớp lệnh < t.c => đỏ
+  }
 
   onSort({column, direction}: SortEvent) {
 
