@@ -88,7 +88,7 @@ export class TableSortableComponent  {
 
   ngOnInit() {
     this.getStocks();
-    setInterval(() => this.getStocks(), 30000)
+    setInterval(() => this.getStocks(), 3000)
   }
 
   getStocks(): void {
