@@ -88,7 +88,7 @@ export class TableSortableComponent  {
 
   ngOnInit() {
     this.getStocks();
-    setInterval(() => this.getStocks(), 3000)
+    setInterval(() => this.getStocks(), 300)
   }
 
   getStocks(): void {
@@ -110,9 +110,9 @@ export class TableSortableComponent  {
   }
 
   toTextColor(data: any) {
-    if (data.lastPrice > data.c) return 'stock-c' // khớp lệnh == trần => tím
-    else if (data.lastPrice - data.f == 0) return 'stock-f' // khớp lệnh == sàn => xanh dương
-    else if (data.lastPrice - data.r == 0) return 'stock-r' // khớp lệnh == t.c => vàng
+    if (data.lastPrice == data.c) return 'stock-c' // khớp lệnh == trần => tím
+    else if (data.lastPrice == data.f) return 'stock-f' // khớp lệnh == sàn => xanh dương
+    else if (data.lastPrice == data.r) return 'stock-r' // khớp lệnh == t.c => vàng
     else if (data.lastPrice > data.r) return 'status-i' // khớp lệnh > t.c => xanh
     else if (data.lastPrice < data.r) return 'status-d' // khớp lệnh < t.c => đỏ
   }
