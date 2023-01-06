@@ -1,6 +1,22 @@
 <div id="DZ_W_TimeLine" class="widget-timeline dz-scroll height370" [perfectScrollbar]>
 	<ul class="timeline">
-		<li>
+		<!-- <li>
+			<div class="timeline-badge primary"></div>
+			<a class="timeline-panel text-muted" href="#">
+				<span>10 minutes ago</span>
+				<h6 class="mb-0">Youtube, a video-sharing website, goes live <strong class="text-primary">$500</strong>.</h6>
+			</a>
+		</li> -->
+		<li *ngFor="let new of propNews">
+			<div class="timeline-badge primary"></div>
+			<a class="timeline-panel text-muted" href="{{ new.url }}">
+				<span>{{ new.datepost }}</span>
+				<h6 class="mb-0">
+						{{new.title}}
+					</h6>
+			</a>
+		</li>
+		<!-- <li>
 			<div class="timeline-badge primary"></div>
 			<a class="timeline-panel text-muted" href="#">
 				<span>10 minutes ago</span>
@@ -47,6 +63,6 @@
 				<span>20 minutes ago</span>
 				<h6 class="mb-0">Mashable, a news website and blog, goes live.</h6>
 			</a>
-		</li>
+		</li> -->
 	</ul>
 </div>

@@ -20,6 +20,8 @@ export class TableService implements OnInit {
   private getIDApi = "https://bgdatafeed.vps.com.vn/socket.io/?EIO=3&transport=polling&t=OKGP-f6"
   public websocket = "wss://bgdatafeed.vps.com.vn/socket.io/?EIO=3&transport=websocket&sid="
 
+  private topMoverBreakout = "https://fiin-market.ssi.com.vn/TopMover/GetTopBreakout?language=vi&ComGroupCode=All&TimeRange=OneWeek&Rate=OnePointFive"
+
   private joinMess = '42["regs","{\"action\":\"join\",\"list\":\"ACB,BID,BVH,CTG,FPT,GAS,GVR,HDB,HPG,KDH,MBB,MSN,MWG,NVL,PDR,PLX,POW,SAB,SSI,STB,TCB,TPB,VCB,VHM,VIB,VIC,VJC,VNM,VPB,VRE\"}"]'
   private leaveMess = '42["regs","{\"action\":\"leave\",\"list\":\"ACB,BID,BVH,CTG,FPT,GAS,GVR,HDB,HPG,KDH,MBB,MSN,MWG,NVL,PDR,PLX,POW,SAB,SSI,STB,TCB,TPB,VCB,VHM,VIB,VIC,VJC,VNM,VPB,VRE\"}"]'
   private probe = "2probe";
@@ -34,11 +36,13 @@ export class TableService implements OnInit {
   error: any;
   received: any = [];
   sent = [];
+  topMovers: any[] = [];
 
   constructor(private http: HttpClient) {
     this.getStocks();
     this.getSID();
     this.sendMessage();
+    this.getTopMoverAPI();
   }
 
   ngOnInit() {
@@ -102,6 +106,16 @@ export class TableService implements OnInit {
         this.callSocket();
       }
     )
+  }
+
+  getTopMoverAPI() {
+    return this.http.get(this.topMoverBreakout)
+  }
+
+  getTopMover() {
+    this.getTopMoverAPI().subscribe((data: any) => {
+      this.topMovers = data;
+    } )
   }
 
   //add sid to the websocket URL and connect
