@@ -1,4 +1,5 @@
-import { TableService } from '../../../service/general-service/table-sortable.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { TableService } from '../../../service/general-service/table-stocks.service';
 import { Component,  Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 
 interface Country {
@@ -71,24 +72,43 @@ export class NgbdSortableHeader {
   }
 }
 
+const fadeInOut = trigger('fadeInOut', [
+  state(
+    'open',
+    style({
+      opacity: 1,
+      color: 'red'
+    })
+  ),
+  state(
+    'close',
+    style({
+      opacity: 0,
+    })
+  ),
+  transition('open=>close', [animate('2s ease-out')]),
+  transition('close=>open', [animate('2s ease-in')]),
+])
+
 
 @Component({
   selector: 'app-table-sortable',
   templateUrl: './table-sortable.component.html',
   styleUrls: ['./table-sortable.component.css'],
-  providers: [TableService]
+  providers: [TableService],
+  animations: [fadeInOut]
 })
 export class TableSortableComponent  {
   @ViewChildren( NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
   stocks: any[] = [];
   sid: any = {};
   countries = COUNTRIES;
-
+  topMover: any[] = [];
   constructor(private tableService: TableService) { }
 
   ngOnInit() {
     this.getStocks();
-    setInterval(() => this.getStocks(), 300)
+    // setInterval(() => this.getStocks(), 300)
   }
 
   getStocks(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TableService } from '../../../service/general-service/table-stocks.service';
 
 interface Country {
   name: string;
@@ -38,15 +39,26 @@ const COUNTRIES: Country[] = [
 @Component({
   selector: 'app-table-basic',
   templateUrl: './table-basic.component.html',
-  styleUrls: ['./table-basic.component.css']
+  styleUrls: ['./table-basic.component.css'],
+  providers: [TableService]
 })
 export class TableBasicComponent implements OnInit {
+  topMover: any[] = [];
 
-  constructor() { }
+  constructor(
+    private tableService: TableService
+  ) { }
 
   ngOnInit(): void {
+    this.getTopMover();
   }
-  
-  countries = COUNTRIES;
+
+  getTopMover() {
+    this.tableService.getTopMoverAPI()
+      .subscribe((res:any) => {
+        this.topMover = res.items;
+        console.log(this.topMover);
+      });
+  }
 
 }

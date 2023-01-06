@@ -64,9 +64,9 @@
     <tbody>
       <tr *ngFor="let stock of stocks">
         <th class="{{stock.statusColor}}" scope="row">{{ stock.sym }}</th>
-        <td class="stock-r">{{ stock.r | number }}</td>
-        <td class="stock-c">{{ stock.c | number }}</td>
-        <td class="stock-f">{{ stock.f | number }}</td>
+        <td class="stock-r">{{ stock.r }}</td>
+        <td @fadeInOut class="stock-c">{{ stock.c }}</td>
+        <td class="stock-f">{{ stock.f }}</td>
 
         <td class="status-{{stock.g1[2]}}">{{ stock.g1[0] }}</td>
         <td class="status-{{stock.g1[2]}}">{{ stock.g1[1] }}</td>

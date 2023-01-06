@@ -52,3 +52,7 @@ ngbd-table-complete span.ngb-highlight {
   color: #33EEEE;
 }
 
+.animate__animated.animate__flash {
+  --animate-duration: 1s;
+}
+

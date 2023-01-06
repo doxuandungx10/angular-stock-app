@@ -1,24 +1,32 @@
-<p>Table is just a mapping of objects to table rows with <code>ngFor</code></p>
 <div class="table-responsive">
-	<table class="table table-striped">
-	  <thead>
-	  <tr>
-		<th scope="col">#</th>
-		<th scope="col">Country</th>
-		<th scope="col">Area</th>
-		<th scope="col">Population</th>
-	  </tr>
-	  </thead>
-	  <tbody>
-	  <tr *ngFor="let country of countries; index as i">
-		<th scope="row">{{ i + 1 }}</th>
-		<td>
-		  <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
-		  {{ country.name }}
-		</td>
-		<td>{{ country.area | number }}</td>
-		<td>{{ country.population | number }}</td>
-	  </tr>
-	  </tbody>
-	</table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" rowspan="2">Mã CK</th>
+        <th scope="col" rowspan="2">Hạng mục</th>
+        <th scope="col" rowspan="2">T.C</th>
+        <th scope="col" rowspan="2">Trần</th>
+        <th scope="col" rowspan="2">Sàn</th>
+        <th scope="col" rowspan="2">Khối lượng</th>
+        <th scope="col" rowspan="2">Giá</th>
+        <th scope="col" rowspan="2">% thay đổi</th>
+        <th scope="col" rowspan="2">Vỗn hoá (tỷ)</th>
+        <th scope="col" rowspan="2">Xếp hạng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of topMover">
+        <td>{{ item.ticker }}</td>
+        <td>{{ item.sectorName }}</td>
+        <td>{{ item.referencePrice }}</td>
+        <td>{{ item.ceilingPrice }}</td>
+        <td>{{ item.floorPrice }}</td>
+        <td>{{ item.volume }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.percentPriceChange }}</td>
+        <td>{{ item.value }}</td>
+        <td>{{ item.rank }} / {{ item.totalRank }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
