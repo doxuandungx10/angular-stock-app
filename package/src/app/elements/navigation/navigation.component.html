@@ -10,7 +10,7 @@
             <p class="mb-0 fs-14 font-w400">marquezzzz@mail.com</p>
         </div> -->
         <ul class="metismenu" id="menu" metis-menu>
-          <li [ngClass]="{'mm-active': chartsArray.indexOf(currentHref) > -1}">
+          <li class="{{(currentHref == '/admin/widget-basic') ? 'mm-active' : ''}}">
             <a [routerLink]="['/admin/widget-basic']" href="javascript:void()" aria-expanded="false">
               <i class="flaticon-061-puzzle"></i>
               <span class="nav-text">Tin tức</span>
@@ -43,7 +43,7 @@
                               <li><a [routerLink]="['/admin/chart-chartjs']" class="{{(currentHref == '/admin/index-2') ? 'mm-active' : ''}}">Chartjs</a></li>
                           </ul> -->
           </li>
-          <li [ngClass]="{'mm-active': bootstrapArray.indexOf(currentHref) > -1}">
+          <li class="{{(currentHref == '/admin/ui-table') ? 'mm-active' : ''}}">
             <a [routerLink]="['/admin/ui-table']" href="javascript:void()" aria-expanded="false">
               <i class="flaticon-003-diamond"></i>
               <span class="nav-text">Bảng điện tử</span>
@@ -76,22 +76,22 @@
 
             </ul> -->
           </li>
-            <li [ngClass]="{'mm-active': dashboardArray.indexOf(currentHref) > -1}">
+            <li class="{{(currentHref == '/admin/index') ? 'mm-active' : ''}}">
                 <a [routerLink]="['/admin/index']" href="javascript:void()">
                     <i class="flaticon-144-layout"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
-                <ul aria-expanded="false"  [ngClass]="{'mm-show': dashboardArray.indexOf(currentHref) > -1}">
-                    <!-- <li><a class="{{(currentHref == '/admin/index' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/index']">Dashboard</a></li> -->
-                    <!-- <li><a [routerLink]="['/admin/my-wallets']" class="{{(currentHref == '/admin/my-wallets') ? 'mm-active' : ''}}">Wallet</a></li>
+                <!-- <ul aria-expanded="false"  [ngClass]="{'mm-show': dashboardArray.indexOf(currentHref) > -1}">
+                    <li><a class="{{(currentHref == '/admin/index' || currentHref == '/admin') ? 'mm-active' : ''}}" [routerLink]="['/admin/index']">Dashboard</a></li>
+                    <li><a [routerLink]="['/admin/my-wallets']" class="{{(currentHref == '/admin/my-wallets') ? 'mm-active' : ''}}">Wallet</a></li>
                     <li><a [routerLink]="['/admin/transactions']" class="{{(currentHref == '/admin/transactions') ? 'mm-active' : ''}}">Transactions</a></li>
                     <li><a [routerLink]="['/admin/coin-details']" class="{{(currentHref == '/admin/coin-details') ? 'mm-active' : ''}}">Coin Details</a></li>
                     <li><a [routerLink]="['/admin/portofolio']" class="{{(currentHref == '/admin/portofolio') ? 'mm-active' : ''}}">Portofolio</a></li>
-                    <li><a [routerLink]="['/admin/market-capital']" class="{{(currentHref == '/admin/market-capital') ? 'mm-active' : ''}}">Market Capital</a></li> -->
-                </ul>
+                    <li><a [routerLink]="['/admin/market-capital']" class="{{(currentHref == '/admin/market-capital') ? 'mm-active' : ''}}">Market Capital</a></li>
+                </ul> -->
 
             </li>
-            <li [ngClass]="{'mm-active': apsArray.indexOf(currentHref) > -1}">
+            <li class="{{(currentHref == '/admin/app-profile') ? 'mm-active' : ''}}">
                 <a [routerLink]="['/admin/app-profile']" href="javascript:void()">
                     <i class="flaticon-077-menu-1"></i>
                     <span class="nav-text">Stock board</span>
@@ -120,15 +120,9 @@
                     </li>
                 </ul> -->
             </li>
-            <li>
-              <a [routerLink]="['/admin/app-profile']" href="javascript:void()">
-                <i class="flaticon-061-puzzle"></i>
-                <span class="nav-text">Watchlist</span>
-              </a>
-            </li>
-            <li>
+            <li class="{{(currentHref == '/admin/portofolio') ? 'mm-active' : ''}}">
               <a [routerLink]="['/admin/portofolio']" href="javascript:void()">
-                <i class="flaticon-144-layout"></i>
+                <i class="flaticon-061-puzzle"></i>
                 <span class="nav-text">Portfolio</span>
               </a>
             </li>
