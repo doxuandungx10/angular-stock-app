@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { TableService } from '../../../service/general-service/table-stocks.service';
 import { Component,  Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { StockDetailService } from 'src/app/service/general-service/stock-detail.service';
+import {ChartData, ChartService} from "../../../service/general-service/chart.service";
 
 const fadeInOut = trigger('fadeInOut', [
   state(
@@ -37,15 +38,40 @@ export class TableSortableComponent  {
   isVisible: boolean = false;
   selectedSym = "";
   stockDetail: any[] = [];
+  listChartData:ChartData[] =[];
 
   constructor(private tableService: TableService,
     private modalService: NgbModal,
-    private stockDetailService: StockDetailService
-    ) { }
+    private stockDetailService: StockDetailService,
+    private chartDetailService: ChartService
+  ) { }
 
   ngOnInit() {
     this.getStocks();
     setInterval(() => this.getStocks(), 30000)
+  }
+
+  setDataChartDetails(from,to,sym){
+    this.chartDetailService.setData(from, to, sym)
+    this.chartDetailService.getData();
+    this.chartDetailService.getDataResponse();
+  }
+   getDataChartDetails(){
+     console.log(this.chartDetailService.getLengthData())
+    for (let i = 0 ; i < this.chartDetailService.getLengthData(); i++){
+      this.listChartData.push({
+        s:this.chartDetailService.getS(),
+        symbol:this.chartDetailService.getSymbol(),
+        c:this.chartDetailService.getC()[i],
+        h:this.chartDetailService.getH()[i],
+        l:this.chartDetailService.getL()[i],
+        o:this.chartDetailService.getO()[i],
+        t:this.chartDetailService.getT()[i],
+        v:this.chartDetailService.getV()[i],
+      })
+      console.log(this.listChartData)
+    }
+
   }
 
   getStocks(): void {
@@ -62,15 +88,18 @@ export class TableSortableComponent  {
           g7: el.g7.split('|'),
           statusColor: this.toTextColor(el)
         }));
-        console.log(this.stocks);
+        // console.log(this.stocks);
       });
   }
 
-  getStockDetail(sym: any) {
+  async getStockDetail(sym: any) {
     this.stockDetailService.getBaseInfo(sym).subscribe((res:any) => {
-      console.log(res);
+      // console.log(res);
+
       this.stockDetail = res;
     });
+    this.setDataChartDetails(1639038571,1673166631,sym)
+   setTimeout(()=> this.getDataChartDetails(),100);
   }
 
   toTextColor(data: any) {
@@ -118,7 +147,7 @@ export class TableSortableComponent  {
 	open(modelId:any, data) {
     this.selectedSym = "";
     this.selectedSym = data;
-    console.log(data);
+    // console.log(data);
 		this.modalService.open(modelId, {size: 'xl'});
     this.getStockDetail(this.selectedSym);
 	}
