@@ -27,10 +27,7 @@ export class BaseService {
           responseType: 'blob',
         });
       default:
-        return this.httpClient.get(this.configService.getConfig().api.baseUrl + url, {
-          headers: this.createHeaders().set('skipLoading', 'true') || {},
-          params
-        });
+        return this.httpClient.get(this.configService.getConfig().api.baseUrl + url);
     }
   }
   emulatorGet(url: string, params?: {}, responseType?: string): Observable<any> {

@@ -1,3 +1,4 @@
+import { ShareModule } from './shared/share.module';
 import { AppConfigService } from './../app-config.service';
 import { NotificationService } from './service/notification.service';
 import { NgModule } from '@angular/core';
@@ -1413,6 +1414,7 @@ export function configServiceFactory(config: AppConfigService) {
     MatTableModule,
     MatTooltipModule,
     MatTreeModule,
+    ShareModule
   ],
   providers: [
 		SharedService,
