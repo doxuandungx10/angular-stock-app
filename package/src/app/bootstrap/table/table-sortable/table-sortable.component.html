@@ -63,28 +63,28 @@
     </thead>
     <tbody>
       <tr *ngFor="let stock of stocks">
-        <th (click)="open(replyModal, stock.sym)" class="{{stock.statusColor}}" scope="row">{{ stock.sym }}</th>
-        <td class="stock-r">{{ stock.r }}</td>
+        <th ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" (click)="open(replyModal, stock.sym)" class="{{stock.statusColor}}" scope="row">{{ stock.sym }}</th>
+        <td class="stock-r" [style]="stock.statusBackground1">{{ stock.r }}</td>
         <td @fadeInOut class="stock-c">{{ stock.c }}</td>
         <td class="stock-f">{{ stock.f }}</td>
 
-        <td class="status-{{stock.g1[2]}}">{{ stock.g1[0] }}</td>
-        <td class="status-{{stock.g1[2]}}">{{ stock.g1[1] }}</td>
-        <td class="status-{{stock.g2[2]}}">{{ stock.g2[0] }}</td>
-        <td class="status-{{stock.g2[2]}}">{{ stock.g2[1] }}</td>
-        <td class="status-{{stock.g3[2]}}">{{ stock.g3[0] }}</td>
-        <td class="status-{{stock.g3[2]}}">{{ stock.g3[1] }}</td>
+        <td class="status-{{stock.g1[2]}}" [style]="stock.statusBackground1">{{ stock.g1[0] }}</td>
+        <td class="status-{{stock.g1[2]}}" [style]="stock.statusBackground1">{{ stock.g1[1] }}</td>
+        <td class="status-{{stock.g2[2]}}" [style]="stock.statusBackground2">{{ stock.g2[0] }}</td>
+        <td class="status-{{stock.g2[2]}}" [style]="stock.statusBackground2">{{ stock.g2[1] }}</td>
+        <td class="status-{{stock.g3[2]}}" [style]="stock.statusBackground3">{{ stock.g3[0] }}</td>
+        <td class="status-{{stock.g3[2]}}" [style]="stock.statusBackground3">{{ stock.g3[1] }}</td>
 
         <td class="{{stock.statusColor}}">{{ stock.lastPrice }}</td>
         <td class="{{stock.statusColor}}">{{ stock.lastVolume }}</td>
         <td class="{{stock.statusColor}}">{{ stock.ot }}</td>
 
-        <td class="status-{{stock.g4[2]}}">{{ stock.g4[1] }}</td>
-        <td class="status-{{stock.g4[2]}}">{{ stock.g4[1] }}</td>
-        <td class="status-{{stock.g5[2]}}">{{ stock.g5[1] }}</td>
-        <td class="status-{{stock.g5[2]}}">{{ stock.g5[1] }}</td>
-        <td class="status-{{stock.g6[2]}}">{{ stock.g6[1] }}</td>
-        <td class="status-{{stock.g6[2]}}">{{ stock.g6[1] }}</td>
+        <td class="status-{{stock.g4[2]}}" [style]="stock.statusBackground4">{{ stock.g4[1] }}</td>
+        <td class="status-{{stock.g4[2]}}" [style]="stock.statusBackground4">{{ stock.g4[1] }}</td>
+        <td class="status-{{stock.g5[2]}}" [style]="stock.statusBackground5">{{ stock.g5[1] }}</td>
+        <td class="status-{{stock.g5[2]}}" [style]="stock.statusBackground5">{{ stock.g5[1] }}</td>
+        <td class="status-{{stock.g6[2]}}" [style]="stock.statusBackground6">{{ stock.g6[1] }}</td>
+        <td class="status-{{stock.g6[2]}}" [style]="stock.statusBackground6">{{ stock.g6[1] }}</td>
 
         <td>{{ stock.lot }}</td>
         <td>0</td>

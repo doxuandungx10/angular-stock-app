@@ -48,7 +48,7 @@ export class TableSortableComponent  {
 
   ngOnInit() {
     this.getStocks();
-    setInterval(() => this.getStocks(), 30000)
+    setInterval(() => this.getStocks(), 3200)
   }
 
   setDataChartDetails(from,to,sym){
@@ -88,7 +88,33 @@ export class TableSortableComponent  {
           g7: el.g7.split('|'),
           statusColor: this.toTextColor(el)
         }));
-        // console.log(this.stocks);
+        console.log(this.stocks);
+
+        // add class color
+        this.stocks = this.stocks.map(el => ({
+          ...el,
+          statusBackground1: this.toStatusBackground(el.g1[2]),
+          statusBackground2: this.toStatusBackground(el.g2[2]),
+          statusBackground3: this.toStatusBackground(el.g3[2]),
+          statusBackground4: this.toStatusBackground(el.g4[2]),
+          statusBackground5: this.toStatusBackground(el.g5[2]),
+          statusBackground6: this.toStatusBackground(el.g6[2])
+        }));
+        console.log("with class", this.stocks);
+
+        //remove class color
+        setTimeout(() => {
+          this.stocks = this.stocks.map(el => ({
+            ...el,
+            statusBackground1: "",
+            statusBackground2: "",
+            statusBackground3: "",
+            statusBackground4: "",
+            statusBackground5: "",
+            statusBackground6: ""
+          }));
+          console.log("no class", this.stocks);
+        }, 1200)
       });
   }
 
@@ -108,6 +134,12 @@ export class TableSortableComponent  {
     else if (data.lastPrice == data.r) return 'stock-r' // khớp lệnh == t.c => vàng
     else if (data.lastPrice > data.r) return 'status-i' // khớp lệnh > t.c => xanh
     else if (data.lastPrice < data.r) return 'status-d' // khớp lệnh < t.c => đỏ
+  }
+
+  toStatusBackground(data: any) {
+    if (data == 'd') return 'background-color: #FF373A; color: white'
+    else if (data == 'i') return 'background-color: #20FF00; color: white'
+    else if (data =='e') return 'background-color: none; color: none'
   }
 
   showModal(): void {
@@ -147,8 +179,8 @@ export class TableSortableComponent  {
 	open(modelId:any, data) {
     this.selectedSym = "";
     this.selectedSym = data;
-    // console.log(data);
-		this.modalService.open(modelId, {size: 'xl'});
+    console.log(data);
+		this.modalService.open(modelId, {size: 'xl', centered: true});
     this.getStockDetail(this.selectedSym);
 	}
 

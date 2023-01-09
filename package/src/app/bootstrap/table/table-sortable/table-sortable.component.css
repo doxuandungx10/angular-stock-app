@@ -53,6 +53,13 @@ ngbd-table-complete span.ngb-highlight {
 }
 
 .animate__animated.animate__flash {
-  --animate-duration: 1s;
+  background-color: #FF373A;
+  color: white;
+  --animate-delay: 1s
+  --animate-duration: 0.1s;
 }
+table tbody tr th:hover {
+  cursor: pointer;
+}
+
 
