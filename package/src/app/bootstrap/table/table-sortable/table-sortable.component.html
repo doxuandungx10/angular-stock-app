@@ -62,29 +62,29 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let stock of stocks">
-        <th ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" (click)="open(replyModal, stock.sym)" class="{{stock.statusColor}}" scope="row">{{ stock.sym }}</th>
-        <td class="stock-r" [style]="stock.statusBackground1">{{ stock.r }}</td>
+      <tr *ngFor="let stock of stocks; let i = index">
+        <th (click)="open(replyModal, stock.sym)" class="{{stock.statusColor}}" scope="row">{{ stock.sym }}</th>
+        <td class="stock-r">{{ stock.r }}</td>
         <td @fadeInOut class="stock-c">{{ stock.c }}</td>
         <td class="stock-f">{{ stock.f }}</td>
 
-        <td class="status-{{stock.g1[2]}}" [style]="stock.statusBackground1">{{ stock.g1[0] }}</td>
-        <td class="status-{{stock.g1[2]}}" [style]="stock.statusBackground1">{{ stock.g1[1] }}</td>
-        <td class="status-{{stock.g2[2]}}" [style]="stock.statusBackground2">{{ stock.g2[0] }}</td>
-        <td class="status-{{stock.g2[2]}}" [style]="stock.statusBackground2">{{ stock.g2[1] }}</td>
-        <td class="status-{{stock.g3[2]}}" [style]="stock.statusBackground3">{{ stock.g3[0] }}</td>
-        <td class="status-{{stock.g3[2]}}" [style]="stock.statusBackground3">{{ stock.g3[1] }}</td>
+        <td class="status-{{stock.g1[2]}}" [ngClass]="{'bg-decrease': stock.g1[0] < currentStocks[i].g1[0], 'bg-increase': stock.g1[0] > currentStocks[i].g1[0]}">{{ stock.g1[0] }}</td>
+        <td class="status-{{stock.g1[2]}}" [ngClass]="{'bg-decrease': stock.g1[1] < currentStocks[i].g1[1], 'bg-increase': stock.g1[1] > currentStocks[i].g1[1]}">{{ stock.g1[1] }}</td>
+        <td class="status-{{stock.g2[2]}}" [ngClass]="{'bg-decrease': stock.g2[0] < currentStocks[i].g2[0], 'bg-increase': stock.g2[0] > currentStocks[i].g2[0]}">{{ stock.g2[0] }}</td>
+        <td class="status-{{stock.g2[2]}}" [ngClass]="{'bg-decrease': stock.g2[1] < currentStocks[i].g2[1], 'bg-increase': stock.g2[1] > currentStocks[i].g2[1]}">{{ stock.g2[1] }}</td>
+        <td class="status-{{stock.g3[2]}}" [ngClass]="{'bg-decrease': stock.g3[0] < currentStocks[i].g3[0], 'bg-increase': stock.g3[0] > currentStocks[i].g3[0]}">{{ stock.g3[0] }}</td>
+        <td class="status-{{stock.g3[2]}}" [ngClass]="{'bg-decrease': stock.g3[1] < currentStocks[i].g3[1], 'bg-increase': stock.g3[1] > currentStocks[i].g3[1]}">{{ stock.g3[1] }}</td>
 
-        <td class="{{stock.statusColor}}">{{ stock.lastPrice }}</td>
-        <td class="{{stock.statusColor}}">{{ stock.lastVolume }}</td>
-        <td class="{{stock.statusColor}}">{{ stock.ot }}</td>
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.lastPrice !== currentStocks[i].lastPrice}">{{ stock.lastPrice }}</td>
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.lastVolume !== currentStocks[i].lastVolume}">{{ stock.lastVolume }}</td>
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.ot !== currentStocks[i].ot}">{{ stock.ot }}</td>
 
-        <td class="status-{{stock.g4[2]}}" [style]="stock.statusBackground4">{{ stock.g4[1] }}</td>
-        <td class="status-{{stock.g4[2]}}" [style]="stock.statusBackground4">{{ stock.g4[1] }}</td>
-        <td class="status-{{stock.g5[2]}}" [style]="stock.statusBackground5">{{ stock.g5[1] }}</td>
-        <td class="status-{{stock.g5[2]}}" [style]="stock.statusBackground5">{{ stock.g5[1] }}</td>
-        <td class="status-{{stock.g6[2]}}" [style]="stock.statusBackground6">{{ stock.g6[1] }}</td>
-        <td class="status-{{stock.g6[2]}}" [style]="stock.statusBackground6">{{ stock.g6[1] }}</td>
+        <td class="status-{{stock.g4[2]}}" [ngClass]="{'bg-decrease': stock.g4[0] < currentStocks[i].g4[0], 'bg-increase': stock.g4[0] > currentStocks[i].g4[0]}">{{ stock.g4[0] }}</td>
+        <td class="status-{{stock.g4[2]}}" [ngClass]="{'bg-decrease': stock.g4[1] < currentStocks[i].g4[1], 'bg-increase': stock.g4[1] > currentStocks[i].g4[1]}">{{ stock.g4[1] }}</td>
+        <td class="status-{{stock.g5[2]}}" [ngClass]="{'bg-decrease': stock.g5[0] < currentStocks[i].g5[0], 'bg-increase': stock.g5[0] > currentStocks[i].g5[0]}">{{ stock.g5[0] }}</td>
+        <td class="status-{{stock.g5[2]}}" [ngClass]="{'bg-decrease': stock.g5[1] < currentStocks[i].g5[1], 'bg-increase': stock.g5[1] > currentStocks[i].g5[1]}">{{ stock.g5[1] }}</td>
+        <td class="status-{{stock.g6[2]}}" [ngClass]="{'bg-decrease': stock.g6[0] < currentStocks[i].g6[0], 'bg-increase': stock.g6[0] > currentStocks[i].g6[0]}">{{ stock.g6[0] }}</td>
+        <td class="status-{{stock.g6[2]}}" [ngClass]="{'bg-decrease': stock.g6[1] < currentStocks[i].g6[1], 'bg-increase': stock.g6[1] > currentStocks[i].g6[1]}">{{ stock.g6[1] }}</td>
 
         <td>{{ stock.lot }}</td>
         <td>0</td>
@@ -126,13 +126,13 @@
           <li class="nav-item" ngbNavItem="posts"><a href="#my-posts" data-toggle="tab" class="nav-link" ngbNavLink>Tổng
               quan</a>
             <ng-template ngbNavContent>
-              {{listChartData[0].symbol}}
-              {{listChartData[0].s}}
-              {{listChartData[0].h}}
-              {{listChartData[0].l}}
-              {{listChartData[0].o}}
-              {{listChartData[0].t}}
-              {{listChartData[0].v}}
+              {{listChartData[0]?.symbol}}
+              {{listChartData[0]?.s}}
+              {{listChartData[0]?.h}}
+              {{listChartData[0]?.l}}
+              {{listChartData[0]?.o}}
+              {{listChartData[0]?.t}}
+              {{listChartData[0]?.v}}
             </ng-template>
 
           </li>

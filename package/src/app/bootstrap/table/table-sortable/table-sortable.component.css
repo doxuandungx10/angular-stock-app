@@ -62,4 +62,17 @@ table tbody tr th:hover {
   cursor: pointer;
 }
 
+.bg-increase {
+  color: white;
+  background-color: #20FF00;
+}
 
+.bg-decrease {
+  color: white;
+  background-color: #FF373A;
+}
+
+.bg-change {
+  color: white;
+  background-color: #FFC249;
+}

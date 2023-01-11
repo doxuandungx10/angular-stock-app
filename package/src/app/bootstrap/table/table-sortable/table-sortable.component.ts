@@ -4,6 +4,8 @@ import { TableService } from '../../../service/general-service/table-stocks.serv
 import { Component,  Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
 import { StockDetailService } from 'src/app/service/general-service/stock-detail.service';
 import {ChartData, ChartService} from "../../../service/general-service/chart.service";
+import { Observable, forkJoin } from 'rxjs';
+import { StockResponse } from './stock-response.interface';
 
 const fadeInOut = trigger('fadeInOut', [
   state(
@@ -32,13 +34,14 @@ const fadeInOut = trigger('fadeInOut', [
   animations: [fadeInOut]
 })
 export class TableSortableComponent  {
-  stocks: any[] = [];
+  stocks: StockResponse[];
   sid: any = {};
   topMover: any[] = [];
   isVisible: boolean = false;
   selectedSym = "";
   stockDetail: any[] = [];
   listChartData:ChartData[] =[];
+  currentStocks: StockResponse[];
 
   constructor(private tableService: TableService,
     private modalService: NgbModal,
@@ -47,8 +50,8 @@ export class TableSortableComponent  {
   ) { }
 
   ngOnInit() {
-    this.getStocks();
-    setInterval(() => this.getStocks(), 3200)
+    this.getNewStocks();
+    setInterval(() => this.getNewStocks(), 2000)
   }
 
   setDataChartDetails(from,to,sym){
@@ -74,7 +77,28 @@ export class TableSortableComponent  {
 
   }
 
-  getStocks(): void {
+  async getStockDetail(sym: any) {
+    this.stockDetailService.getBaseInfo(sym).subscribe((res:any) => {
+      // console.log(res);
+
+      this.stockDetail = res;
+    });
+    // const character = this.setDataChartDetails(1639038571,1673166631,sym);
+    // const characterHomeworld = this.getDataChartDetails();
+
+    // forkJoin([character, characterHomeworld]).subscribe(results => {
+    //   console.log('character', results[0]);
+    //   console.log('characterHomeworld', results[1]);
+    // });
+    this.setDataChartDetails(1639038571,1673166631,sym)
+   setTimeout(()=> this.getDataChartDetails(),100);
+  }
+
+  getOldStocks(): void {
+    this.currentStocks = this.stocks;
+  }
+
+  getNewStocks(): void {
     this.tableService.getData()
       .subscribe((res:any) => {
         this.stocks = res.map(el => ({
@@ -88,44 +112,40 @@ export class TableSortableComponent  {
           g7: el.g7.split('|'),
           statusColor: this.toTextColor(el)
         }));
-        console.log(this.stocks);
-
-        // add class color
-        this.stocks = this.stocks.map(el => ({
-          ...el,
-          statusBackground1: this.toStatusBackground(el.g1[2]),
-          statusBackground2: this.toStatusBackground(el.g2[2]),
-          statusBackground3: this.toStatusBackground(el.g3[2]),
-          statusBackground4: this.toStatusBackground(el.g4[2]),
-          statusBackground5: this.toStatusBackground(el.g5[2]),
-          statusBackground6: this.toStatusBackground(el.g6[2])
-        }));
-        console.log("with class", this.stocks);
-
-        //remove class color
+        console.log("new stock",this.stocks);
         setTimeout(() => {
-          this.stocks = this.stocks.map(el => ({
-            ...el,
-            statusBackground1: "",
-            statusBackground2: "",
-            statusBackground3: "",
-            statusBackground4: "",
-            statusBackground5: "",
-            statusBackground6: ""
-          }));
-          console.log("no class", this.stocks);
-        }, 1200)
+          this.currentStocks = this.stocks;
+          console.log("old stock",this.currentStocks);
+        }, 1000)
+
+        // // add class color
+        // this.stocks = this.stocks.map(el => ({
+        //   ...el,
+        //   statusBgSell3: this.toStatusBackground(el.g1[2]),
+        //   statusBgSell2: this.toStatusBackground(el.g2[2]),
+        //   statusBgSell1: this.toStatusBackground(el.g3[2]),
+        //   statusBg: this.toStatusBackground(el.g4[2]),
+        //   statusBgBuy1: this.toStatusBackground(el.g5[2]),
+        //   statusBgBuy2: this.toStatusBackground(el.g6[2]),
+        //   statusBgBuy3: this.toStatusBackground(el.g6[2])
+        // }));
+        // console.log("with class", this.stocks);
+
+        // //remove class color
+        // setTimeout(() => {
+        //   this.stocks = this.stocks.map(el => ({
+        //     ...el,
+        //     statusBgSell3: "",
+        //     statusBgSell2: "",
+        //     statusBgSell1: "",
+        //     statusBg: "",
+        //     statusBgBuy1: "",
+        //     statusBgBuy2: "",
+        //     statusBgBuy3: ""
+        //   }));
+        //   console.log("no class", this.stocks);
+        // }, 1200)
       });
-  }
-
-  async getStockDetail(sym: any) {
-    this.stockDetailService.getBaseInfo(sym).subscribe((res:any) => {
-      // console.log(res);
-
-      this.stockDetail = res;
-    });
-    this.setDataChartDetails(1639038571,1673166631,sym)
-   setTimeout(()=> this.getDataChartDetails(),100);
   }
 
   toTextColor(data: any) {
@@ -137,6 +157,18 @@ export class TableSortableComponent  {
   }
 
   toStatusBackground(data: any) {
+    // for (let i=0; i<currentList.length; i++) {
+    //   currentList.map(el => ({
+    //     ...el,
+    //     statusBgSell3: this.toStatusBackground(el.g1[2]),
+    //     statusBgSell2: this.toStatusBackground(el.g2[2]),
+    //     statusBgSell1: this.toStatusBackground(el.g3[2]),
+    //     statusBg: this.toStatusBackground(el.g4[2]),
+    //     statusBgBuy1: this.toStatusBackground(el.g5[2]),
+    //     statusBgBuy2: this.toStatusBackground(el.g6[2]),
+    //     statusBgBuy3: this.toStatusBackground(el.g6[2])
+    //   }))
+    // }
     if (data == 'd') return 'background-color: #FF373A; color: white'
     else if (data == 'i') return 'background-color: #20FF00; color: white'
     else if (data =='e') return 'background-color: none; color: none'
