@@ -75,9 +75,9 @@
         <td class="status-{{stock.g3[2]}}" [ngClass]="{'bg-decrease': stock.g3[0] < currentStocks[i].g3[0], 'bg-increase': stock.g3[0] > currentStocks[i].g3[0]}">{{ stock.g3[0] }}</td>
         <td class="status-{{stock.g3[2]}}" [ngClass]="{'bg-decrease': stock.g3[1] < currentStocks[i].g3[1], 'bg-increase': stock.g3[1] > currentStocks[i].g3[1]}">{{ stock.g3[1] }}</td>
 
-        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.lastPrice !== currentStocks[i].lastPrice}">{{ stock.lastPrice }}</td>
-        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.lastVolume !== currentStocks[i].lastVolume}">{{ stock.lastVolume }}</td>
-        <td class="{{stock.statusColor}}" [ngClass]="{'bg-decrease': stock.ot !== currentStocks[i].ot}">{{ stock.ot }}</td>
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-change': stock.lastPrice !== currentStocks[i].lastPrice}">{{ stock.lastPrice }}</td>
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-change': stock.lastVolume !== currentStocks[i].lastVolume}">{{ stock.lastVolume }}</td>
+        <td class="{{stock.statusColor}}" [ngClass]="{'bg-change': stock.ot !== currentStocks[i].ot}">{{ stock.ot }}</td>
 
         <td class="status-{{stock.g4[2]}}" [ngClass]="{'bg-decrease': stock.g4[0] < currentStocks[i].g4[0], 'bg-increase': stock.g4[0] > currentStocks[i].g4[0]}">{{ stock.g4[0] }}</td>
         <td class="status-{{stock.g4[2]}}" [ngClass]="{'bg-decrease': stock.g4[1] < currentStocks[i].g4[1], 'bg-increase': stock.g4[1] > currentStocks[i].g4[1]}">{{ stock.g4[1] }}</td>

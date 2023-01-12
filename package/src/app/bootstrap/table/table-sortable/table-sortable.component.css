@@ -64,15 +64,15 @@ table tbody tr th:hover {
 
 .bg-increase {
   color: white;
-  background-color: #20FF00;
+  background-color: #2baa18;
 }
 
 .bg-decrease {
   color: white;
-  background-color: #FF373A;
+  background-color: #d1373a;
 }
 
 .bg-change {
   color: white;
-  background-color: #FFC249;
+  background-color: #cc9e41;
 }
