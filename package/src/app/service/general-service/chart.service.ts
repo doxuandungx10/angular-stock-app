@@ -38,7 +38,7 @@ export class ChartService implements OnInit{
     this.endTime = to;
   }
   setStartTime(from:number){
-    this.endTime = from;
+    this.startTime = from;
   }
 
   setData(from,to , symbol){

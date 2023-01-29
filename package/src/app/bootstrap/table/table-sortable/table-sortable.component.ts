@@ -55,12 +55,14 @@ export class TableSortableComponent  {
   }
 
   setDataChartDetails(from,to,sym){
-    this.chartDetailService.setData(from, to, sym)
-    this.chartDetailService.getData();
-    this.chartDetailService.getDataResponse();
+    this.chartDetailService.setData(from, to, sym) //set biến param startTime, endTime, symbol để gọi api
+    this.chartDetailService.getData(); //subscribe API, lấy data
+    this.chartDetailService.getDataResponse(); // nhận data trả về
   }
    getDataChartDetails(){
      console.log(this.chartDetailService.getLengthData())
+     //format lại data thành dạng array of objects 
+     this.listChartData = []; //clear array trước khi set
     for (let i = 0 ; i < this.chartDetailService.getLengthData(); i++){
       this.listChartData.push({
         s:this.chartDetailService.getS(),
